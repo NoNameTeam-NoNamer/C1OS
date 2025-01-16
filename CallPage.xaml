@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="C1OS.CallPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:C1OS"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled"
+    Background="Transparent">
+
+    <Grid>
+        <TextBlock x:Name="pageTitle" Text="点名"
+               Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
+        <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
+            <TextBlock HorizontalAlignment="Center" x:Name="NameOut" Style="{StaticResource DisplayTextBlockStyle}" Margin="16">
+            <TextBlock.Transitions>
+                <TransitionCollection>
+                    <RepositionThemeTransition />
+                </TransitionCollection>
+            </TextBlock.Transitions>
+            </TextBlock>
+
+            <Button HorizontalAlignment="Center" Content="点名" Click="CALL" x:Name="Caller" FontSize="32"/>
+        </StackPanel>
+    </Grid>
+</Page>

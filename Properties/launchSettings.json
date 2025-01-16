@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "C1OS (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "C1OS (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,245 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>C1OS</RootNamespace>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <PackageIcon>901.png</PackageIcon>
+    <AssemblyVersion>1.9.0</AssemblyVersion>
+    <FileVersion>1.9.0</FileVersion>
+    <Copyright>©No Name Team 2024,all rights reserved.</Copyright>
+    <Description>新版一班专用系统</Description>
+    <Product>C1OS</Product>
+    <Company>No Name Team</Company>
+    <Authors>某个不想起名的人,另一个不想起名的人</Authors>
+    <Version>1.9.1</Version>
+    <DefaultLanguage>zh-cn</DefaultLanguage>
+    <PackageCertificateThumbprint>9C8341B5503ECF89C1954A531D4DF0574701D102</PackageCertificateThumbprint>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <UseWindowsForms>False</UseWindowsForms>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <Title>一班专用系统</Title>
+    <PackageLicenseFile>No Name Team - C1OS.cer</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <AssemblyName>C1OS</AssemblyName>
+    <UseWPF>False</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Assets\AppLogo.altform-lightunplated_targetsize-16.png" />
+    <Content Remove="Assets\AppLogo.altform-lightunplated_targetsize-24.png" />
+    <Content Remove="Assets\AppLogo.altform-lightunplated_targetsize-256.png" />
+    <Content Remove="Assets\AppLogo.altform-lightunplated_targetsize-32.png" />
+    <Content Remove="Assets\AppLogo.altform-lightunplated_targetsize-48.png" />
+    <Content Remove="Assets\AppLogo.altform-unplated_targetsize-16.png" />
+    <Content Remove="Assets\AppLogo.altform-unplated_targetsize-24.png" />
+    <Content Remove="Assets\AppLogo.altform-unplated_targetsize-256.png" />
+    <Content Remove="Assets\AppLogo.altform-unplated_targetsize-32.png" />
+    <Content Remove="Assets\AppLogo.altform-unplated_targetsize-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\AppLogo.scale-100.png" />
+    <None Remove="Assets\AppLogo.scale-125.png" />
+    <None Remove="Assets\AppLogo.scale-150.png" />
+    <None Remove="Assets\AppLogo.scale-200.png" />
+    <None Remove="Assets\AppLogo.scale-400.png" />
+    <None Remove="Assets\AppLogo.targetsize-16.png" />
+    <None Remove="Assets\AppLogo.targetsize-16_altform-lightunplated.png" />
+    <None Remove="Assets\AppLogo.targetsize-16_altform-unplated.png" />
+    <None Remove="Assets\AppLogo.targetsize-24.png" />
+    <None Remove="Assets\AppLogo.targetsize-24_altform-unplated.png" />
+    <None Remove="Assets\AppLogo.targetsize-256.png" />
+    <None Remove="Assets\AppLogo.targetsize-256_altform-lightunplated.png" />
+    <None Remove="Assets\AppLogo.targetsize-32.png" />
+    <None Remove="Assets\AppLogo.targetsize-32_altform-lightunplated.png" />
+    <None Remove="Assets\AppLogo.targetsize-32_altform-unplated.png" />
+    <None Remove="Assets\AppLogo.targetsize-48.png" />
+    <None Remove="Assets\AppLogo.targetsize-48_altform-lightunplated.png" />
+    <None Remove="Assets\BigTile.scale-100.png" />
+    <None Remove="Assets\BigTile.scale-125.png" />
+    <None Remove="Assets\BigTile.scale-150.png" />
+    <None Remove="Assets\BigTile.scale-200.png" />
+    <None Remove="Assets\BigTile.scale-400.png" />
+    <None Remove="Assets\LockScreen.scale-100.png" />
+    <None Remove="Assets\LockScreen.scale-125.png" />
+    <None Remove="Assets\LockScreen.scale-150.png" />
+    <None Remove="Assets\LockScreen.scale-200.png" />
+    <None Remove="Assets\LockScreen.scale-400.png" />
+    <None Remove="Assets\SmallTile.scale-100.png" />
+    <None Remove="Assets\SmallTile.scale-125.png" />
+    <None Remove="Assets\SmallTile.scale-150.png" />
+    <None Remove="Assets\SmallTile.scale-200.png" />
+    <None Remove="Assets\SmallTile.scale-400.png" />
+    <None Remove="Assets\SplashScreen.scale-100.png" />
+    <None Remove="Assets\SplashScreen.scale-125.png" />
+    <None Remove="Assets\SplashScreen.scale-150.png" />
+    <None Remove="Assets\SplashScreen.scale-400.png" />
+    <None Remove="Assets\Square150x150Logo.scale-100.png" />
+    <None Remove="Assets\Square150x150Logo.scale-125.png" />
+    <None Remove="Assets\Square150x150Logo.scale-150.png" />
+    <None Remove="Assets\Square150x150Logo.scale-400.png" />
+    <None Remove="Assets\StoreLogo.scale-100.png" />
+    <None Remove="Assets\StoreLogo.scale-125.png" />
+    <None Remove="Assets\StoreLogo.scale-150.png" />
+    <None Remove="Assets\StoreLogo.scale-200.png" />
+    <None Remove="Assets\StoreLogo.scale-400.png" />
+    <None Remove="Assets\WideLogo.scale-100.png" />
+    <None Remove="Assets\WideLogo.scale-125.png" />
+    <None Remove="Assets\WideLogo.scale-150.png" />
+    <None Remove="Assets\WideLogo.scale-200.png" />
+    <None Remove="Assets\WideLogo.scale-400.png" />
+    <None Remove="CallPage.xaml" />
+    <None Remove="CardPage.xaml" />
+    <None Remove="DatePage.xaml" />
+    <None Remove="EarthOnline.xaml" />
+    <None Remove="HelpPage.xaml" />
+    <None Remove="HomePage.xaml" />
+    <None Remove="MorePage.xaml" />
+    <None Remove="PTable.xaml" />
+    <None Remove="RingPage.xaml" />
+    <None Remove="SettingsPage.xaml" />
+    <None Remove="Translator.xaml" />
+    <None Remove="VersionPage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+    <PackageReference Include="System.Speech" Version="9.0.0" />
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <!-- 
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Assets\901.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Assets\No Name Team - C1OS.cer">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Translator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="PTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="EarthOnline.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="CardPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VersionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="HelpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MorePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DatePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="RingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="CallPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <WebView2UseDispatchAdapter>False</WebView2UseDispatchAdapter>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <ApplicationIcon>Assets\ICON.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <NeutralLanguage>zh-Hans</NeutralLanguage>
+  </PropertyGroup>
+
+  <!-- 
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if 
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <WarningLevel>9999</WarningLevel>
+    <Optimize>True</Optimize>
+    <DebugType>portable</DebugType>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <WarningLevel>9999</WarningLevel>
+    <DebugType>portable</DebugType>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+</Project>

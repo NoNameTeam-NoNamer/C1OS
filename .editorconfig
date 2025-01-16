@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0017: 程序定义了多个入口点。使用 /main (指定包含入口点的类型)进行编译。
+dotnet_diagnostic.CS0017.severity = warning

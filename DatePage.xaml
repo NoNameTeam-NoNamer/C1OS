@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="C1OS.DatePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:C1OS"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled"
+    Background="Transparent">
+    <Page.Resources>
+        <DataTemplate x:Name="TimerTemplate" x:DataType="local:Timer">
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Text="{x:Bind Name}" Style="{StaticResource BodyStrongTextBlockStyle}" TextAlignment="Center" Margin="12"/>
+                <TextBlock Text="{x:Bind ArrivalDateTime}" TextAlignment="Center" Margin="12"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <TextBlock x:Name="pageTitle" Text="倒计时"
+               Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
+        <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
+            <TextBlock HorizontalAlignment="Center" x:Name="DeadTimeOutput" FontFamily="楷体" FontSize="50" 
+                           FontStyle="Normal" TextWrapping="WrapWholeWords" CharacterSpacing="20" Margin="24"/>
+            <HyperlinkButton HorizontalAlignment="Center" Content="编辑计时器" Click="OpenEditor" x:Name="EditorOpener"/>
+            <StackPanel Visibility="Collapsed" x:Name="TimerEditor">
+                <ListView ItemTemplate="{StaticResource TimerTemplate}" x:Name="TimerSelect" Height="164" Width="500" SelectionMode="Single" SelectionChanged="SelectTimer"/>
+                <Expander HorizontalAlignment="Center" Header="添加计时器">
+                    <StackPanel VerticalAlignment="Center">
+
+                        <DatePicker x:Name="arrivalDatePicker" Header="日期"
+    DayFormat="{}{day.integer} ({dayofweek.abbreviated})"
+    SelectedDateChanged="ArrivalDatePicker_SelectedDateChanged"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TimePicker x:Name="arrivalTimePicker" Header="时间"
+    MinuteIncrement="1"
+    SelectedTimeChanged="ArrivalTimePicker_SelectedTimeChanged"/>
+                            <Button Content="重置" Click="ClearDateButton_Click"
+    VerticalAlignment="Bottom" Height="30" Width="54"/>
+                        </StackPanel>
+                        <TextBox PlaceholderText="名称" Margin="12" x:Name="TimerNameSet"/>
+                        <TextBlock x:Name="arrivalText" Margin="0,0,0,6"/>
+                        <Button Content="创建" Click="Create" Margin="0,6,0,16" HorizontalAlignment="Center" Height="30" Width="54"/>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Page>
