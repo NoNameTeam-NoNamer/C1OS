@@ -54,7 +54,7 @@
 
                 <NavigationViewItemSeparator/>
                 <NavigationViewItemHeader Content="网页"/>
-                <NavigationViewItem Tag="C1OS.EarthOnline" Icon="Globe" Content="地球ol新闻"/>
+                <NavigationViewItem Tag="C1OS.EarthOnline" Icon="Globe" Content="天眼地图"/>
                 <NavigationViewItem Tag="C1OS.PTable" Content="元素周期表">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xF0E2;"/>
@@ -80,6 +80,6 @@
             </Grid>
     </Grid>
     <Window.SystemBackdrop>
-        <MicaBackdrop Kind="Base"/>
+        <MicaBackdrop/>
     </Window.SystemBackdrop>
 </Window>

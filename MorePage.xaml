@@ -44,6 +44,8 @@
                         <TextBox x:Name="LittleHaagentusInput" PlaceholderText="H2+O2-H2O" Header="输入反应物与生成物:" Margin="6"/>
                         <TextBlock x:Name="LittleHaagentus" HorizontalAlignment="Center" IsTextSelectionEnabled="True"/>
                         <Button Content="分析" Click="LittleHaagentusGoToWork" HorizontalAlignment="Center" Margin="6"/>
+                        <!--Button Content="分析（新引擎）" Click="LittleHaagentusGoToWork2" HorizontalAlignment="Center" Margin="6"/>
+                        <TextBlock x:Name="LittleHaagentusTeaching" HorizontalAlignment="Center" IsTextSelectionEnabled="True"/-->
                         <TextBlock HorizontalAlignment="Center">
                            提示1：本辅助器仅提供配平辅助功能
                            <LineBreak/>

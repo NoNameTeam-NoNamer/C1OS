@@ -14,7 +14,7 @@
         <TextBlock x:Name="pageTitle" Text="版本"
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
-            <TextBlock HorizontalAlignment="Center" Text="当前版本：1.9.9" FontSize="24"/>
+            <TextBlock HorizontalAlignment="Center" Text="当前版本：1.9.10" FontSize="24"/>
             <TextBlock HorizontalAlignment="Center">
             <Run FontFamily="楷体" Foreground="DarkGray">
             系统开发中，若发现BUG请及时反馈！</Run>
@@ -65,6 +65,36 @@
             <Expander Header="更新日志" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <ScrollViewer MaxHeight="200" MinHeight="50" Width="450">
                     <TextBlock HorizontalAlignment="Left">
+                        2025.2.13（DeepSeek单杀）
+                        <LineBreak/>
+                        1.9.10
+                        <LineBreak/>
+                        “地球ol新闻”改为“天眼地图”
+                        <LineBreak/>
+                        现在支持Github下载，你可以直接下载
+                        <LineBreak/>
+                        也可以用浏览器打开仓库下载
+                        <LineBreak/>
+                        仓库里有1.9.9以后的所有公测和正式版
+                        <LineBreak/>
+                        （1.9.10就是正式版）
+                        <LineBreak/>
+                        现在还可以直接跳转安装应用安装程序
+                        <LineBreak/>
+                        让你也可以打开神奇的.msix包😅
+                        <LineBreak/>
+                        <LineBreak/>
+                        2025.2.11（DeepSeek翻车）
+                        <LineBreak/>
+                        1.9.10-alpha
+                        <LineBreak/>
+                        尝试使用DeepSeek开发新配平器引擎，但是失败了
+                        <LineBreak/>
+                        已封锁，希望有朝一日打赢其复活赛
+                        <LineBreak/>
+                        诶2.0就是不来，你能把我怎么样，你打我撒😜
+                        <LineBreak/>
+                        <LineBreak/>
                         2025.1.16（最有实力的一集）
                         <LineBreak/>
                         1.9.9
@@ -508,13 +538,25 @@
             <Expander Header="查看商标" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                    <Image Source="/Assets/No Name Team.png" MaxHeight="300"/>
-                    <TextBlock Text="©" FontSize="48"/>
-                </StackPanel>
-                    <TextBlock Text="" FontSize="24"/>
-                    <TextBlock Text="使用Blender建模、着色和渲染" FontSize="12"/>
+                        <Image Source="/Assets/No Name Team.png" MaxHeight="300"/>
+                        <TextBlock Text="©" FontSize="48"/>
+                    </StackPanel>
+                    <TextBlock Text="使用Blender建模、着色和渲染" FontSize="12" Margin="24"/>
                 </StackPanel>
             </Expander>
+            <StackPanel Orientation="Vertical" Margin="24" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <HyperlinkButton Content="检查更新" Click="CheckUpdate" Margin="12,0"/>
+                    <HyperlinkButton Content="访问Github" Click="OpenGithub" Margin="12,0"/>
+                    <HyperlinkButton Content="获取应用安装程序" Click="AddInstaller" Margin="12,0"/>
+                </StackPanel>
+                <Button Visibility="Collapsed" x:Name="DownloadUpdate" Click="DownloadUpdatePack" HorizontalAlignment="Center" Margin="12">
+                    <FontIcon Glyph="&#xE896;" />
+                </Button>
+                <TextBlock FontSize="16" Margin="12" x:Name="UpdateFeedBack" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
         </StackPanel>
     </Grid>
 </Page>

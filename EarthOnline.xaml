@@ -11,6 +11,6 @@
     Background="Transparent">
 
     <Grid>
-        <WebView2 x:Name="WebView" Source="https://www.diqiushe.com/h5/#/pages/contents/info?cid=223&amp;title=每日全服早报"/>
+        <WebView2 x:Name="WebView" Source="https://www.molanqing.com/game/map/map.html"/>
     </Grid>
 </Page>

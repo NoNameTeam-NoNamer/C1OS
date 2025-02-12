@@ -21,17 +21,17 @@
                 如果遇到了BUG，请直接向我们反馈
                 <LineBreak/>
             </TextBlock>
-            <Expander Header="想使用旧版了，旧版在哪里？" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
+            <Expander Header="想使用VB版了，VB版在哪里？" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <TextBlock HorizontalAlignment="Center" >
-                    因为旧版严重的显示不兼容问题
+                    因为VB版严重的显示不兼容问题
                     <LineBreak/>
-                    我们不再支持旧版！
+                    我们不再支持VB版！
                     <LineBreak/>
                     我们不会再更新和发布它！
                     <LineBreak/>
-                    旧版的倒计时不会再新增！
+                    VB版的倒计时不会再新增！
                      <LineBreak/>
-                    旧版不再提供！
+                    VB版不再提供！
                 </TextBlock>
             </Expander>
             <Expander Header="我受够这个应用了，怎么删除它？" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
@@ -41,7 +41,7 @@
             </Expander>
             <Expander Header="为什么要开发新版本？" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <TextBlock HorizontalAlignment="Center" >
-                    1.新版本基于WinUI3，这是一种使用C#和xml框架的技术，用途更加广泛
+                    1.新版本基于WinUI3，这是一种使用C#和xaml框架的技术，用途更加广泛
                     <LineBreak/>
                     2.WinUI3的窗口渲染使用矢量渲染，不会出现不同屏幕显示不兼容问题
                     <LineBreak/>
@@ -66,24 +66,40 @@
             </Expander>
             <Expander Header="怎么更新应用？" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <TextBlock HorizontalAlignment="Center" >
-                    我们会发布新版本，运行新版本的安装包即可
+                    版本页面点击检查更新，或者点击访问Github打开Github仓库下载更新
+                    <LineBreak/>
+                    Github打不开是正常的，它经常会这样
+                    <LineBreak/>
+                    找不到更新包或下载失败纯属网络问题
+                    <LineBreak/>
+                    下载后解压压缩包（.zip），运行.msix包安装
+                    <LineBreak/>
+                    无法运行.msix包可以在版本页面点击安装应用安装程序，跳转应用商店安装
                 </TextBlock>
             </Expander>
             <Expander Header="不会用怎么办？" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <TextBlock HorizontalAlignment="Center" >
                     🤓👉🤖
                     <LineBreak/>
-                    鉴定为：人机
-                </TextBlock>
-            </Expander>
-            <Expander Header="在哪里获得更新？" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
-                <TextBlock HorizontalAlignment="Center" >
-                    联系我们
+                    鉴定为：入机
                 </TextBlock>
             </Expander>
             <Expander Header="我还有更多问题" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <TextBlock HorizontalAlignment="Center" >
                     联系我们
+                </TextBlock>
+            </Expander>
+            <Expander Header="怎么联系你们？" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
+                <TextBlock HorizontalAlignment="Center" IsTextSelectionEnabled="True">
+                    有我们联系方式的我就不多说了
+                    <LineBreak/>
+                    其他入可以给No Name Team邮箱发送邮件反馈，地址如下（可选中复制）
+                    <LineBreak/>
+                   NoNameTeam@NoNameTeamCN.onmicrosoft.com
+                    <LineBreak/>
+                    反馈时记得说明反馈对象是C1OS（一班专用系统），我们会回复
+                   <LineBreak/>
+                   或者在版本页面打开Github仓库，在Github发送反馈（推荐）
                 </TextBlock>
             </Expander>
         </StackPanel>
