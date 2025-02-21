@@ -36,6 +36,7 @@ namespace C1OS
         private StorageFolder _downloadsFolder;
         private string _latestDownloadUrl;
         private string _currentVersion;
+        private string PATH;
 
         public VersionPage()
         {
@@ -81,6 +82,7 @@ namespace C1OS
             try
             {
                 DownloadUpdate.Visibility = Visibility.Collapsed;
+                DownloadOpener.Visibility = Visibility.Collapsed;
                 UpdateFeedBack.Text = "正在检查更新......";
 
                 var (isUpdateAvailable, latestVersion, downloadUrl) = await CheckForUpdateAsync();
@@ -174,16 +176,11 @@ namespace C1OS
                     }
                 }
                 DownloadUpdate.Visibility = Visibility.Collapsed;
-                UpdateFeedBack.Text = $"下载完成！文件已保存至：{targetFile.Path}\n" +
+                DownloadOpener.Visibility = Visibility.Visible;
+                PATH = targetFile.Path;
+                UpdateFeedBack.Text = $"下载完成！文件已保存至：{PATH}\n" +
                     "请解压后运行.msix安装包\n无法打开就使用powershell运行install.ps1文件\n或点击上方安装应用安装程序";
 
-                // 打开资源管理器并选中文件
-                var processInfo = new ProcessStartInfo
-                {
-                    FileName = "explorer.exe",
-                    Arguments = $"/select, \"{targetFile.Path}\""
-                };
-                Process.Start(processInfo);
             }
             catch (Exception ex)
             {
@@ -192,7 +189,16 @@ namespace C1OS
             }
         }
 
-
+        private void OpenUpdatePack(object sender, RoutedEventArgs e)
+        {
+            // 打开资源管理器并选中文件
+            var processInfo = new ProcessStartInfo
+            {
+                FileName = "explorer.exe",
+                Arguments = $"/select, \"{PATH}\""
+            };
+            Process.Start(processInfo);
+        }
 
 
         private async void AddInstaller(object sender, RoutedEventArgs e)

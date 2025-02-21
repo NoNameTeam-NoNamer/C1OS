@@ -14,6 +14,7 @@
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                 <TextBlock Text="{x:Bind Name}" Style="{StaticResource BodyStrongTextBlockStyle}" TextAlignment="Center" Margin="12"/>
                 <TextBlock Text="{x:Bind ArrivalDateTime}" TextAlignment="Center" Margin="12"/>
+                <TextBlock Text="{x:Bind DeleteTime}" TextAlignment="Center" Margin="12" Visibility="{x:Bind AutoDelete}"/>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
@@ -22,30 +23,51 @@
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
             <TextBlock HorizontalAlignment="Center" x:Name="DeadTimeOutput" FontFamily="楷体" FontSize="50" 
-                           FontStyle="Normal" TextWrapping="WrapWholeWords" CharacterSpacing="20" Margin="24"/>
+                           FontStyle="Normal" TextWrapping="WrapWholeWords" CharacterSpacing="20" Margin="24">
+                <TextBlock.Transitions>
+                    <TransitionCollection>
+                        <RepositionThemeTransition />
+                    </TransitionCollection>
+                </TextBlock.Transitions>
+            </TextBlock>
             <HyperlinkButton HorizontalAlignment="Center" Content="编辑计时器" Click="OpenEditor" x:Name="EditorOpener"/>
             <StackPanel Visibility="Collapsed" x:Name="TimerEditor">
-                <ListView ItemTemplate="{StaticResource TimerTemplate}" x:Name="TimerSelect" Height="164" Width="500" SelectionMode="Single" SelectionChanged="SelectTimer"/>
-                <Expander HorizontalAlignment="Center" Header="添加计时器">
-                    <StackPanel VerticalAlignment="Center">
-
-                        <DatePicker x:Name="arrivalDatePicker" Header="日期"
+                <ListView ItemTemplate="{StaticResource TimerTemplate}" x:Name="TimerSelect" MaxHeight="164" MaxWidth="500" SelectionMode="Single" SelectionChanged="SelectTimer"/>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button Click="CreateClick" HorizontalAlignment="Center" Margin="12">
+                        <FontIcon Glyph="&#xE710;" />
+                    </Button>
+                    <Button x:Name="EditButton" Click="EditClick" HorizontalAlignment="Center" Margin="12" IsEnabled="False">
+                        <FontIcon Glyph="&#xE70F;" />
+                    </Button>
+                    <Button x:Name="DeleteButton" Click="DeleteClick" HorizontalAlignment="Center" Margin="12" IsEnabled="False">
+                        <FontIcon Glyph="&#xE74D;" />
+                    </Button>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="Editor">
+                    <DatePicker x:Name="arrivalDatePicker" Header="日期"
     DayFormat="{}{day.integer} ({dayofweek.abbreviated})"
     SelectedDateChanged="ArrivalDatePicker_SelectedDateChanged"/>
-                        <StackPanel Orientation="Horizontal">
-                            <TimePicker x:Name="arrivalTimePicker" Header="时间"
+                    <StackPanel Orientation="Horizontal">
+                        <TimePicker x:Name="arrivalTimePicker" Header="时间"
     MinuteIncrement="1"
     SelectedTimeChanged="ArrivalTimePicker_SelectedTimeChanged"/>
-                            <Button Content="重置" Click="ClearDateButton_Click"
+                        <Button Content="重置" Click="ClearDateButton_Click"
     VerticalAlignment="Bottom" Height="30" Width="54"/>
-                        </StackPanel>
-                        <TextBox PlaceholderText="名称" Margin="12" x:Name="TimerNameSet"/>
-                        <TextBlock x:Name="arrivalText" Margin="0,0,0,6"/>
-                        <Button Content="创建" Click="Create" Margin="0,6,0,16" HorizontalAlignment="Center" Height="30" Width="54"/>
                     </StackPanel>
-                </Expander>
+                    <TextBox PlaceholderText="名称" Margin="0,12" x:Name="TimerNameSet" MinWidth="150" MaxWidth="290" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="arrivalText" Margin="0,0,0,6" HorizontalAlignment="Center"/>
+                    <CheckBox x:Name="AutoDeleteChecker" HorizontalAlignment="Center" Content="自动删除" Checked="OpenAutoDeleteEditor" Unchecked="CloseAutoDeleteEditor" IsChecked="False"/>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="DeleteTimeEditor" Visibility="Collapsed">
+                        <NumberBox PlaceholderText="天数" Margin="12" x:Name="DeleteDaySet" Value="0" SpinButtonPlacementMode="Inline" Minimum="0" Maximum="36500" Width="200"/>
+                        <TimePicker x:Name="DeleteTimePicker" Header="时间" MinuteIncrement="1" SelectedTime="0:0"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button Content="取消" Click="HideEditor" Margin="6" HorizontalAlignment="Center" Height="30" Width="54"/>
+                        <Button Content="确定" Click="Create" Margin="6" HorizontalAlignment="Center" Height="30" Width="54"/>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
-
     </Grid>
 </Page>

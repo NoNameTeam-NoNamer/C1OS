@@ -14,7 +14,7 @@
         <TextBlock x:Name="pageTitle" Text="版本"
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
-            <TextBlock HorizontalAlignment="Center" Text="当前版本：1.9.10" FontSize="24"/>
+            <TextBlock HorizontalAlignment="Center" Text="当前版本：1.10.0" FontSize="24" Margin="6"/>
             <TextBlock HorizontalAlignment="Center">
             <Run FontFamily="楷体" Foreground="DarkGray">
             系统开发中，若发现BUG请及时反馈！</Run>
@@ -22,7 +22,7 @@
             </TextBlock>
             <TextBlock HorizontalAlignment="Center">
             <Run FontFamily="楷体" Foreground="DarkGray">
-            ©No Name Team 2024,all rights reserved.</Run>
+            ©No Name Team 2025,all rights reserved.</Run>
             <LineBreak/>
             </TextBlock>
             <Expander Header="开发人员和鸣谢名单" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
@@ -65,6 +65,21 @@
             <Expander Header="更新日志" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <ScrollViewer MaxHeight="200" MinHeight="50" Width="450">
                     <TextBlock HorizontalAlignment="Left">
+                        2025.2.22
+                        <LineBreak/>
+                        1.10.0
+                        <LineBreak/>
+                        倒计时正式推出啦！
+                        <LineBreak/>
+                        现在支持自动删除过期的计时器！
+                        <LineBreak/>
+                        还支持直接编辑计时器！
+                        <LineBreak/>
+                        并且计时器现在会保存！
+                        <LineBreak/>
+                        下载更新后不再弹出窗口，而是等待点击打开
+                        <LineBreak/>
+                        <LineBreak/>
                         2025.2.13（DeepSeek单杀）
                         <LineBreak/>
                         1.9.10
@@ -552,6 +567,9 @@
                 </StackPanel>
                 <Button Visibility="Collapsed" x:Name="DownloadUpdate" Click="DownloadUpdatePack" HorizontalAlignment="Center" Margin="12">
                     <FontIcon Glyph="&#xE896;" />
+                </Button>
+                <Button Visibility="Collapsed" x:Name="DownloadOpener" Click="OpenUpdatePack" HorizontalAlignment="Center" Margin="12">
+                    <FontIcon Glyph="&#xEC50;" />
                 </Button>
                 <TextBlock FontSize="16" Margin="12" x:Name="UpdateFeedBack" HorizontalAlignment="Center"/>
             </StackPanel>

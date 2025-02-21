@@ -15,13 +15,12 @@
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
             <TextBlock HorizontalAlignment="Center" x:Name="NameOut" Style="{StaticResource DisplayTextBlockStyle}" Margin="16">
-            <TextBlock.Transitions>
-                <TransitionCollection>
-                    <RepositionThemeTransition />
-                </TransitionCollection>
-            </TextBlock.Transitions>
+                <TextBlock.Transitions>
+                    <TransitionCollection>
+                        <RepositionThemeTransition />
+                    </TransitionCollection>
+                </TextBlock.Transitions>
             </TextBlock>
-
             <Button HorizontalAlignment="Center" Content="点名" Click="CALL" x:Name="Caller" FontSize="32"/>
         </StackPanel>
     </Grid>
