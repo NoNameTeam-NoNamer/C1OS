@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -79,16 +79,16 @@ namespace C1OS
             { 
                 TimerEditor.Visibility = Visibility.Visible;
                 Editor.Visibility = Visibility.Collapsed;
-                DeadTimeOutput.Visibility = Visibility.Collapsed;
-                EditorOpener.Content = "¹Ø±Õ±à¼­Æ÷";
+                DeadTimeShow.Visibility = Visibility.Collapsed;
+                EditorOpener.Content = "å…³é—­ç¼–è¾‘å™¨";
             }
             else 
             {
                 TimerEditor.Visibility = Visibility.Collapsed;
-                DeadTimeOutput.Visibility = Visibility.Visible;
+                DeadTimeShow.Visibility = Visibility.Visible;
                 TimerSelect.SelectedIndex = -1;
                 Selected = -1;
-                EditorOpener.Content = "±à¼­¼ÆÊ±Æ÷";
+                EditorOpener.Content = "ç¼–è¾‘è®¡æ—¶å™¨";
             }
         }
 
@@ -131,10 +131,10 @@ namespace C1OS
                 // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
                 XamlRoot = this.XamlRoot,
                 Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-                Title = $"ÄãÈ·¶¨ÒªÉ¾³ý¼ÆÊ±Æ÷Âð£¿",
-                Content = $"½«É¾³ý¼ÆÊ±Æ÷¡°{Timers[Selected].Name}¡±£¬´Ë²Ù×÷²»¿ÉÄæ£¡",
-                PrimaryButtonText = "È·¶¨",
-                CloseButtonText = "È¡Ïû",
+                Title = $"ä½ ç¡®å®šè¦åˆ é™¤è®¡æ—¶å™¨å—ï¼Ÿ",
+                Content = $"å°†åˆ é™¤è®¡æ—¶å™¨â€œ{Timers[Selected].Name}â€ï¼Œæ­¤æ“ä½œä¸å¯é€†ï¼",
+                PrimaryButtonText = "ç¡®å®š",
+                CloseButtonText = "å–æ¶ˆ",
                 DefaultButton = ContentDialogButton.Primary
             };
 
@@ -162,9 +162,9 @@ namespace C1OS
             {
                 if (TimerNameSet.Text != String.Empty)
                 {
-                    if (TimerNameSet.Text.Contains('¡¡'))
+                    if (TimerNameSet.Text.Contains('ã€€'))
                     {
-                        arrivalText.Text = "Ãû³ÆÖÐ²»ÔÊÐí°üº¬¡°¡¡¡±(U+3000,È«½Ç¿Õ¸ñ)£¡";
+                        arrivalText.Text = "åç§°ä¸­ä¸å…è®¸åŒ…å«â€œã€€â€(U+3000,å…¨è§’ç©ºæ ¼)ï¼";
                         return;
                     }
                     Timer x = new()
@@ -198,12 +198,12 @@ namespace C1OS
                 }
                 else 
                 {
-                    arrivalText.Text = "ÇëÊäÈëÃû³Æ£¡";
+                    arrivalText.Text = "è¯·è¾“å…¥åç§°ï¼";
                 }
             }
             else
             {
-                arrivalText.Text = "Ö¸¶¨Ê±¼äÓ¦µ±ÍíÓÚÏÖÔÚ£¡";
+                arrivalText.Text = "æŒ‡å®šæ—¶é—´åº”å½“æ™šäºŽçŽ°åœ¨ï¼";
             }
 
 
@@ -245,7 +245,7 @@ namespace C1OS
             arrivalText.Text = string.Empty;
             TimerNameSet.Text = string.Empty;
         }
-        // Ô¤¹ÀËÀÍöÊ±¼ä 2025.6.16 8:30
+        // é¢„ä¼°æ­»äº¡æ—¶é—´ 2025.6.26 8:30
         private void DispatcherTimerSetup()
         {
             dispatcherTimer = new DispatcherTimer();
@@ -258,19 +258,24 @@ namespace C1OS
 
         void Tick(object sender, object e)
         {
-            if (VerifyDateIsFuture(new DateTime(2025, 6, 18, 8, 30, 0)) == true)
+            if (VerifyDateIsFuture(new DateTime(2025, 6, 26, 8, 30, 0)) == true)
             {
-                dif = new DateTime(2025, 6, 16, 8, 30, 0) - DateTime.Now;
-                DeadTimeOutput.Text = $"¾àÀë ÖÐ¿¼ »¹ÓÐ{dif.Days}Ìì{dif.Hours}Ê±{dif.Minutes}·Ö{dif.Seconds}Ãë";
-
+                dif = new DateTime(2025, 6, 26, 8, 30, 0) - DateTime.Now;
+                ReallyDeadTimeOutput.Text = $"è·ç¦» ä¸­è€ƒ è¿˜æœ‰{dif.Days}å¤©{dif.Hours}æ—¶{dif.Minutes}åˆ†{dif.Seconds}ç§’";
+                double progress = (DateTime.Now - new DateTime(2022, 8, 31, 18, 30, 0)).TotalSeconds / (new DateTime(2025, 6, 26, 8, 30, 0) - new DateTime(2022, 8, 31, 18, 30, 0)).TotalSeconds * 10000;
+                ReallyDeadTimeProgressOutput.Text = $"åˆä¸­ç”Ÿæ´» {progress}â€± / {10000-progress}â€±";
+                ReallyDeadTimeProgress.Value = progress/100;
             }
             else 
             {
-                dif = DateTime.Now - new DateTime(2025, 6, 16, 8, 30, 0);
-                DeadTimeOutput.Text = $"¾àÀë ÖÐ¿¼ ÒÑ¹ý{dif.Days}Ìì{dif.Hours}Ê±{dif.Minutes}·Ö{dif.Seconds}Ãë";
+                dif = DateTime.Now - new DateTime(2025, 6, 26, 8, 30, 0);
+                ReallyDeadTimeOutput.Text = $"è·ç¦» ä¸­è€ƒ å·²è¿‡{dif.Days}å¤©{dif.Hours}æ—¶{dif.Minutes}åˆ†{dif.Seconds}ç§’";
+                ReallyDeadTimeProgressOutput.Text = "åˆä¸­ç”Ÿæ´»ç»“æŸäº†ï¼";
+                ReallyDeadTimeProgress.Value = 100;
             }
             if (Timers.Count > 0)
             {
+                DeadTimeOutput.Visibility = Visibility.Visible;
                 for (var i = 0;i < Timers.Count;i++) 
                 {
                     Timer timer = Timers[i];
@@ -279,7 +284,22 @@ namespace C1OS
                     if (VerifyDateIsFuture(time) == true)
                     {
                         dif = time - DateTime.Now;
-                        DeadTimeOutput.Text += $"\n¾àÀë {name} »¹ÓÐ{dif.Days}Ìì{dif.Hours}Ê±{dif.Minutes}·Ö{dif.Seconds}Ãë";
+                        if (i == 0)
+                        { DeadTimeOutput.Text = $"\nè·ç¦» {name} è¿˜æœ‰"; }
+                        else
+                        { DeadTimeOutput.Text += $"\nè·ç¦» {name} è¿˜æœ‰"; }
+                        if (dif <= new TimeSpan(1, 0, 0))
+                        { 
+                            DeadTimeOutput.Text += $"{dif.Minutes}åˆ†{dif.Seconds}ç§’";
+                        }
+                        else if (dif <= new TimeSpan(1, 0, 0, 0))
+                        {
+                            DeadTimeOutput.Text += $"{dif.Hours}æ—¶{dif.Minutes}åˆ†";
+                        }
+                        else
+                        {
+                            DeadTimeOutput.Text += $"{dif.Days}å¤©{dif.Hours}æ—¶";
+                        }
 
                     }
                     else
@@ -298,9 +318,30 @@ namespace C1OS
                                 i--;
                             }
                         }
-                        else { DeadTimeOutput.Text += $"\n¾àÀë {name} ÒÑ¹ý{dif.Days}Ìì{dif.Hours}Ê±{dif.Minutes}·Ö{dif.Seconds}Ãë"; }
+                        else {
+                            if (i == 0)
+                            { DeadTimeOutput.Text = $"\nè·ç¦» {name} å·²è¿‡"; }
+                            else
+                            { DeadTimeOutput.Text += $"\nè·ç¦» {name} å·²è¿‡"; }
+                            if (dif <= new TimeSpan(1, 0, 0))
+                            {
+                                DeadTimeOutput.Text += $"{dif.Minutes}åˆ†{dif.Seconds}ç§’";
+                            }
+                            else if (dif <= new TimeSpan(1, 0, 0, 0))
+                            {
+                                DeadTimeOutput.Text += $"{dif.Hours}æ—¶{dif.Minutes}åˆ†";
+                            }
+                            else
+                            {
+                                DeadTimeOutput.Text += $"{dif.Days}å¤©{dif.Hours}æ—¶";
+                            }
+                        }
                     }
                 }
+            }
+            else
+            {
+                DeadTimeOutput.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -315,18 +356,18 @@ namespace C1OS
             foreach (Timer timer in Timers)
             {
                 DateS += timer.Name;
-                DateS += "¡¡";
+                DateS += "ã€€";
                 DateS += timer.ArrivalDateTime.ToString();
-                DateS += "¡¡";
+                DateS += "ã€€";
                 if (timer.AutoDelete == false)
                 {
                     DateS += "*";
-                    DateS += "¡¡";
+                    DateS += "ã€€";
                 }
                 else 
                 {
                     DateS += timer.DeleteTime.ToString();
-                    DateS += "¡¡";
+                    DateS += "ã€€";
                 }
             }
 
@@ -350,7 +391,7 @@ namespace C1OS
                 // Data is contained in DateS
                 try
                 {
-                    String[] Data = DateS.Split("¡¡");
+                    String[] Data = DateS.Split("ã€€");
                     if ((Data.Length-1) % 3 == 0)
                     {
                         for (int i = 0; i < Data.Length - 1;)

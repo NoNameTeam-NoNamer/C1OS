@@ -65,6 +65,15 @@
             <Expander Header="更新日志" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <ScrollViewer MaxHeight="200" MinHeight="50" Width="450">
                     <TextBlock HorizontalAlignment="Left">
+                        2025.2.23
+                        <LineBreak/>
+                        1.10.1
+                        <LineBreak/>
+                        倒计时添加进度条
+                        <LineBreak/>
+                        优化界面
+                        <LineBreak/>
+                        <LineBreak/>
                         2025.2.22
                         <LineBreak/>
                         1.10.0

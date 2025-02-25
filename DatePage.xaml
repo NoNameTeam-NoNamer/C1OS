@@ -22,15 +22,34 @@
         <TextBlock x:Name="pageTitle" Text="倒计时"
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
-            <TextBlock HorizontalAlignment="Center" x:Name="DeadTimeOutput" FontFamily="楷体" FontSize="50" 
-                           FontStyle="Normal" TextWrapping="WrapWholeWords" CharacterSpacing="20" Margin="24">
-                <TextBlock.Transitions>
-                    <TransitionCollection>
-                        <RepositionThemeTransition />
-                    </TransitionCollection>
-                </TextBlock.Transitions>
-            </TextBlock>
-            <HyperlinkButton HorizontalAlignment="Center" Content="编辑计时器" Click="OpenEditor" x:Name="EditorOpener"/>
+            <StackPanel VerticalAlignment="Center" x:Name="DeadTimeShow">
+                <TextBlock HorizontalAlignment="Center" x:Name="DeadTimeOutput" FontFamily="楷体" FontSize="50"  Visibility="Collapsed"
+               FontStyle="Normal" TextWrapping="WrapWholeWords" CharacterSpacing="20" Margin="24">
+                    <TextBlock.Transitions>
+                        <TransitionCollection>
+                            <RepositionThemeTransition />
+                        </TransitionCollection>
+                    </TextBlock.Transitions>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center" x:Name="ReallyDeadTimeOutput" FontFamily="楷体" FontSize="50" 
+               FontStyle="Normal" TextWrapping="WrapWholeWords" CharacterSpacing="20" Margin="24" Text="倒计时加载中......">
+                    <TextBlock.Transitions>
+                        <TransitionCollection>
+                            <RepositionThemeTransition />
+                        </TransitionCollection>
+                    </TextBlock.Transitions>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center" x:Name="ReallyDeadTimeProgressOutput" FontFamily="楷体" FontSize="25" Text="初中生活进度条加载中......"
+               FontStyle="Normal" TextWrapping="WrapWholeWords" Margin="24,0">
+                    <TextBlock.Transitions>
+                        <TransitionCollection>
+                            <RepositionThemeTransition />
+                        </TransitionCollection>
+                    </TextBlock.Transitions>
+                </TextBlock>
+                <ProgressBar Width="800" Value="0" HorizontalAlignment="Center" x:Name="ReallyDeadTimeProgress"/>
+            </StackPanel>
+            <HyperlinkButton HorizontalAlignment="Center" Content="编辑计时器" Click="OpenEditor" x:Name="EditorOpener" Margin="12"/>
             <StackPanel Visibility="Collapsed" x:Name="TimerEditor">
                 <ListView ItemTemplate="{StaticResource TimerTemplate}" x:Name="TimerSelect" MaxHeight="164" MaxWidth="500" SelectionMode="Single" SelectionChanged="SelectTimer"/>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
