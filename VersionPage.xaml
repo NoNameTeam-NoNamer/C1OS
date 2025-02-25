@@ -14,7 +14,7 @@
         <TextBlock x:Name="pageTitle" Text="版本"
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
-            <TextBlock HorizontalAlignment="Center" Text="当前版本：1.10.1" FontSize="24" Margin="6"/>
+            <TextBlock HorizontalAlignment="Center" Text="当前版本：2.0.0（预览版）" FontSize="24" Margin="6"/>
             <TextBlock HorizontalAlignment="Center">
             <Run FontFamily="楷体" Foreground="DarkGray">
             系统开发中，若发现BUG请及时反馈！</Run>
@@ -65,6 +65,26 @@
             <Expander Header="更新日志" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <ScrollViewer MaxHeight="200" MinHeight="50" Width="450">
                     <TextBlock HorizontalAlignment="Left">
+                        2025.2.25
+                        <LineBreak/>
+                        2.0.0（预览版）
+                        <LineBreak/>
+                        添加隐藏功能
+                        <LineBreak/>
+                        优化部分体验
+                        <LineBreak/>
+                        <LineBreak/>
+                        2025.2.24
+                        <LineBreak/>
+                        1.10.2
+                        <LineBreak/>
+                        支持自定义默认页面
+                        <LineBreak/>
+                        优化语音选择页面
+                        <LineBreak/>
+                        修复背景选择不显示的BUG
+                        <LineBreak/>
+                        <LineBreak/>
                         2025.2.23
                         <LineBreak/>
                         1.10.1

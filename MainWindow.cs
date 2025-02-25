@@ -128,20 +128,57 @@ namespace C1OS
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-        private void NavView_Loaded(object sender, RoutedEventArgs e)
+        private async void NavView_Loaded(object sender, RoutedEventArgs e)
         {
             // You can also add items in code.
 
 
             // Add handler for ContentFrame navigation.
             ContentFrame.Navigated += On_Navigated;
+                try
+                {
+                    Windows.Storage.ApplicationDataContainer localSettings =
+                   Windows.Storage.ApplicationData.Current.LocalSettings;
+                    Windows.Storage.StorageFolder localFolder =
+                         Windows.Storage.ApplicationData.Current.LocalFolder;
 
+                    StorageFile DefaultPageData = await localFolder.GetFileAsync("DefaultPageSetting.ini");
+                string DefaultPage = await FileIO.ReadTextAsync(DefaultPageData);
+                if (DefaultPage == "")
+                {
+                    DefaultPage = "C1OS.HomePage";
+                }
+                var x = await FileIO.ReadTextAsync(DefaultPageData) switch
+                {
+                    "C1OS.HomePage" => 0,
+                    "C1OS.CallPage" => 1,
+                    "C1OS.RingPage" => 2,
+                    "C1OS.DatePage" => 3,
+                    "C1OS.CardPage" => 4,
+                    "C1OS.MorePage" => 5,
+                    "C1OS.EarthOnline" => 6,
+                    "C1OS.PTable" => 7,
+                    "C1OS.Translator" => 8,
+                    "C1OS.HelpPage" => 9,
+                    "C1OS.VersionPage" => 10,
+                    "C1OS.SettingsPage" => 11,
+                    _ => 0,
+                };
+                NavView.SelectedItem = NavView.MenuItems[x];
+                Type navPageType = Type.GetType(DefaultPage);
+                NavView_Navigate(navPageType, new DrillInNavigationTransitionInfo());
+            }
+                catch (Exception)
+                {
+                NavView.SelectedItem = NavView.MenuItems[0];
+                NavView_Navigate(typeof(HomePage), new DrillInNavigationTransitionInfo());
+            }
             // NavView doesn't load any page by default, so load home page.
-            NavView.SelectedItem = NavView.MenuItems[0];
+            
             // If navigation occurs on SelectionChanged, this isn't needed.
             // Because we use ItemInvoked to navigate, we need to call Navigate
             // here to load the home page.
-            NavView_Navigate(typeof(HomePage), new DrillInNavigationTransitionInfo());
+            
         }
 
         private void NavView_ItemInvoked(NavigationView sender,

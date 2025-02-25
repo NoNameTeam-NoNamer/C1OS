@@ -27,6 +27,8 @@ using Windows.ApplicationModel;
 using System.Speech.AudioFormat;
 using System.Speech.Synthesis;
 using System.Threading;
+using static System.Net.Mime.MediaTypeNames;
+using Application = Microsoft.UI.Xaml.Application;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -51,11 +53,13 @@ namespace C1OS
     {
         double CallSpeed;
         bool CallSpeeedSliderOff = true;
-#pragma warning disable IDE0044 // 添加只读修饰符
-        private List<Project> Projects = [];
-        private List<String> Speakers = [];
-        private static System.Speech.Synthesis.SpeechSynthesizer speaker = new();
-#pragma warning restore IDE0044 // 添加只读修饰符
+        bool SpeakerLoading = false;
+        bool NoNameTeam = false;
+        bool Fun = false;
+        bool Moving = false;
+        private readonly List<Project> Projects = [];
+        private readonly List<String> Speakers = [];
+        private static readonly System.Speech.Synthesis.SpeechSynthesizer speaker = new();
 
         public SettingsPage()
         {
@@ -70,6 +74,8 @@ namespace C1OS
             PopulateSpeakers();
             ReadSpeakerVolume();
             ReadSpeakerRate();
+            ReadDefaultPage();
+            ReadSpeaker();
         }
 
         private void PopulateSpeakers()
@@ -87,9 +93,56 @@ namespace C1OS
             SpeakerSelect.ItemsSource = Speakers;
         }
 
+        private void Speak(object sender, RoutedEventArgs e)
+        {
+            speaker.SpeakAsyncCancelAll();
+            if (SpeakerInput.Text == "//No Name Team//")
+            {
+                NoNameTeam = true;
+                PopulateProjects();
+                SpeakerInput.Text = "指令已执行！";
+            }
+            else if(SpeakerInput.Text == "//Fun//")
+            {
+                Fun = true;
+                PopulateProjects();
+                SpeakerInput.Text = "指令已执行！";
+            }
+            else if(SpeakerInput.Text == "//Moving//")
+            {
+                Moving = true;
+                PopulateProjects();
+                SpeakerInput.Text = "指令已执行！";
+            }
+            else if (SpeakerInput.Text == "//Stop//")
+            {
+                NoNameTeam = false;
+                Fun = false;
+                Moving = false;
+                PopulateProjects();
+                SpeakerInput.Text = "指令已执行！";
+            }
+            else if (SpeakerInput.Text == "//All114514//")
+            {
+                NoNameTeam = true;
+                Fun = true;
+                Moving = true;
+                PopulateProjects();
+                SpeakerInput.Text = "指令已执行！";
+            }
+            if (SpeakerInput.Text != "")
+            {
+                speaker.SpeakAsync(SpeakerInput.Text);
+            }
+            else
+            {
+                speaker.SpeakAsync("欢迎使用壹班专用系统！Welcome to use C1OS!");
+            }
+        }
+
         private void PopulateProjects()
         {
-
+            Projects.Clear();
             Project newProject = new()
             {
                 Name = "班徽图案-亮",
@@ -188,20 +241,196 @@ namespace C1OS
             };
             Projects.Add(newProject);
 
-            newProject = new Project
+            if (NoNameTeam == true)
             {
-                Name = "某个不想起名的团队",
-                ImageLocation = "ms-appx:///Assets/Backgrounds/No Namers A.png"
-            };
-            Projects.Add(newProject);
+                newProject = new Project
+                {
+                    Name = "某个不想起名的人",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/No Name Team/No Namer.jpg"
+                };
+                Projects.Add(newProject);
 
-            newProject = new Project
+                newProject = new Project
+                {
+                    Name = "另一个不想起名的人",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/No Name Team/Another No Namer.png"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "K Train & M Train",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/No Name Team/K Train & M Train.jpg"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "某个不想起名的团队商标",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/No Name Team/No Name Team.png"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "某个不想起名的团队A",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/No Name Team/No Namers A.png"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "某个不想起名的团队B",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/No Name Team/No Namers B.png"
+                };
+                Projects.Add(newProject);
+            }
+            if (Moving == true)
             {
-                Name = "某个不想起名的团队",
-                ImageLocation = "ms-appx:///Assets/Backgrounds/No Namers B.png"
-            };
-            Projects.Add(newProject);
+                newProject = new Project
+                {
+                    Name = "某个不想起名的人（动图）",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Moving/Morax.gif"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "另一个不想起名的人（动图1）",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Moving/Haagentus1.gif"
+                };
+                Projects.Add(newProject);
+            }
+            if (Fun == true) 
+            {
+                newProject = new Project
+                {
+                    Name = "包子",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/boots.jfif"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "月亮",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/Moon.jpg"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "肥虫",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/fc.png"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "满灯先生",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/mdxs.png"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "罗哥",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/lxs.jpg"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "鼠妇",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/sf.jpg"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "大亚湾",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/dyw.jpg"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "德邦快递",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/wjband.jpg"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "毛毛",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/mm.jpg"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "齐白石",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/jby.jpg"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "SD",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/sd.png"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "男神",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/xdc.png"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "毕汉平",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/bhp.gif"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "李智聪",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/lzc.jpg"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "蓝叶林",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/lyl.gif"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "夏祥富",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/xxf.gif"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "强召娟",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/qzj.gif"
+                };
+                Projects.Add(newProject);
+
+                newProject = new Project
+                {
+                    Name = "唐雪",
+                    ImageLocation = "ms-appx:///Assets/Backgrounds/Fun/tx.gif"
+                };
+                Projects.Add(newProject);
+            }
             StyledGrid.ItemsSource = Projects;
+            ReadBG();
         }
 
         // 方法用于获取Uri的路径
@@ -243,26 +472,78 @@ namespace C1OS
             }
         }
 
-        private void ChangeSpeaker(object sender, SelectionChangedEventArgs e)
+        private async void ChangeDefaultPage(object sender, RoutedEventArgs e)
+        {
+            var option = ((MenuFlyoutItem)sender).Tag.ToString();
+            DefautPageOutput.Text = ((MenuFlyoutItem)sender).Text;
+            _ =
+   Windows.Storage.ApplicationData.Current.LocalSettings;
+            Windows.Storage.StorageFolder localFolder =
+                 Windows.Storage.ApplicationData.Current.LocalFolder;
+            StorageFile DefaultPageData = await localFolder.CreateFileAsync("DefaultPageSetting.ini",
+               CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(DefaultPageData, option);
+        }
+
+        async void ReadDefaultPage()
         {
             try
             {
-                if (SpeakerSelect.SelectedIndex != -1)
+                Windows.Storage.ApplicationDataContainer localSettings =
+               Windows.Storage.ApplicationData.Current.LocalSettings;
+                Windows.Storage.StorageFolder localFolder =
+                     Windows.Storage.ApplicationData.Current.LocalFolder;
+
+                StorageFile DefaultPageData = await localFolder.GetFileAsync("DefaultPageSetting.ini");
+                DefautPageOutput.Text = await FileIO.ReadTextAsync(DefaultPageData) switch
                 {
-                    speaker.SpeakAsyncCancelAll();
-                    speaker.SelectVoice(Speakers[SpeakerSelect.SelectedIndex]);
-                    speaker.SpeakAsync("欢迎使用壹班专用系统！Welcome to use C1OS!");
-                    SaveSpeaker(Speakers[SpeakerSelect.SelectedIndex]);
+                    "C1OS.HomePage" => "主页",
+                    "C1OS.CallPage" => "点名",
+                    "C1OS.RingPage" => "考试",
+                    "C1OS.DatePage" => "倒计时",
+                    "C1OS.CardPage" => "抽签",
+                    "C1OS.MorePage" => "更多",
+                    "C1OS.EarthOnline" => "天眼地图",
+                    "C1OS.PTable" => "元素周期表",
+                    "C1OS.Translator" => "翻译",
+                    "C1OS.HelpPage" => "帮助",
+                    "C1OS.VersionPage" => "版本",
+                    "C1OS.SettingsPage" => "设置",
+                    _ => "主页",
+                };
+            }
+            catch (Exception)
+            {
+                DefautPageOutput.Text = "主页";
+            }
+        }
+
+        private void ChangeSpeaker(object sender, SelectionChangedEventArgs e)
+        {
+            if (SpeakerLoading != true)
+            {
+                try
+                {
+                    if (SpeakerSelect.SelectedIndex != -1)
+                    {
+                        speaker.SpeakAsyncCancelAll();
+                        speaker.SelectVoice(Speakers[SpeakerSelect.SelectedIndex]);
+                        Speak(sender, e);
+                        SaveSpeaker(Speakers[SpeakerSelect.SelectedIndex]);
+                    }
+                    else
+                    {
+                        Speak(sender, e);
+                        SaveSpeaker(null);
+                    }
                 }
-                else
+                catch
                 {
+                    Speak(sender, e);
                     SaveSpeaker(null);
                 }
             }
-            catch
-            {
-                SaveSpeaker(null);
-            }
+            else { SpeakerLoading = false; }
         }
 
         public static async void SaveSpeaker(string Speaker)
@@ -355,7 +636,7 @@ namespace C1OS
             public static Color GetColorArgb(string strcolor)
         {
             _ = strcolor.Split(',');
-            List<string> list = new(strcolor.Split(','));
+            List<string> list = [.. strcolor.Split(',')];
             byte A = Convert.ToByte(list[0]);
             byte R = Convert.ToByte(list[1]);
             byte G = Convert.ToByte(list[2]);
@@ -515,9 +796,8 @@ namespace C1OS
 
         }
 
-        private void SetDefult(object sender, RoutedEventArgs e)
+        private async void SetDefult()
         {
-            DefultButton.Visibility = Visibility.Collapsed;
             LButton.IsChecked = false;
             DButton.IsChecked = false;
             LDSButton.IsChecked = true;
@@ -525,16 +805,42 @@ namespace C1OS
             CallSpeedSlider.Value = 75;
             MottoSelector.IsOn = false;
             BGOpacitySlider.Value = 0.5;
-            StyledGrid.SelectedValue = -1;
+            StyledGrid.SelectedIndex = -1;
             SpeakerVolumeSlider.Value = 100;
             SpeakerRateSlider.Value = 0;
-            DefultWarning.Text = "已恢复默认设置";
+            DefautPageOutput.Text = "主页";
+            _ =
+   Windows.Storage.ApplicationData.Current.LocalSettings;
+            Windows.Storage.StorageFolder localFolder =
+                 Windows.Storage.ApplicationData.Current.LocalFolder;
+            StorageFile DefaultPageData = await localFolder.CreateFileAsync("DefaultPageSetting.ini",
+               CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(DefaultPageData, "C1OS.HomePage");
+
+            NoNameTeam = false;
+            Fun = false;
+            Moving = false;
+            PopulateProjects();
         }
 
-        private void OpenDefult(object sender, RoutedEventArgs e)
+        private async void OpenDefult(object sender, RoutedEventArgs e)
         {
-            DefultButton.Visibility = Visibility.Visible;
-            DefultWarning.Text = "将把所有设置恢复到默认状态，此操作不可逆，确认继续？";
+            ContentDialog dialog = new()
+            {
+                // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+                XamlRoot = this.XamlRoot,
+                Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                Title = "恢复默认？",
+                Content = "将把所有设置恢复到默认状态，此操作不可逆，确认继续？",
+                PrimaryButtonText = "我知道我在做什么！",
+                CloseButtonText = "取消",
+                DefaultButton = ContentDialogButton.Primary,
+            };
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                SetDefult();
+            }
         }
 
         async void ReadCallSpeed()
@@ -747,5 +1053,65 @@ Windows.Storage.ApplicationData.Current.LocalSettings;
                 SpeakerRateSlider.Value = 0;
             }
         }
+
+        async void ReadBG()
+        {
+            try
+            {
+                Windows.Storage.ApplicationDataContainer localSettings =
+               Windows.Storage.ApplicationData.Current.LocalSettings;
+                Windows.Storage.StorageFolder localFolder =
+                     Windows.Storage.ApplicationData.Current.LocalFolder;
+
+                StorageFile BGData = await localFolder.GetFileAsync("BGSetting.ini");
+                String file = await FileIO.ReadTextAsync(BGData);
+                // Data is contained in SpeedS
+                try
+                {
+                    List<string> Locations = [];
+                    foreach (Project x in Projects)
+                    {
+                        Locations.Add(GetUriPath(x.ImageLocation));
+                    }
+                    StyledGrid.SelectedIndex = Locations.FindIndex(x => x != null && x == file);
+                }
+                catch (Exception)
+                {
+                    StyledGrid.SelectedIndex = -1;
+                }
+            }
+            catch (Exception)
+            {
+                StyledGrid.SelectedIndex = -1;
+            }
+        }
+
+         async void ReadSpeaker()
+         {
+             try
+             {
+                Windows.Storage.ApplicationDataContainer localSettings =
+              Windows.Storage.ApplicationData.Current.LocalSettings;
+                Windows.Storage.StorageFolder localFolder =
+                     Windows.Storage.ApplicationData.Current.LocalFolder;
+
+                StorageFile SpeakerData = await localFolder.GetFileAsync("SpeakerSetting.ini");
+                string Speaker = await FileIO.ReadTextAsync(SpeakerData);
+                // Data is contained in SpeedS
+                 try
+                 {
+                    SpeakerLoading = true;
+                    SpeakerSelect.SelectedIndex = Speakers.IndexOf(Speaker);
+                 }
+                 catch (Exception)
+                 {
+                     SpeakerSelect.SelectedIndex = -1;
+                 }
+             }
+             catch (Exception)
+             {
+                SpeakerSelect.SelectedIndex = -1;
+            }
+         }
     }
 }

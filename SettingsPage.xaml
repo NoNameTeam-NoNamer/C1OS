@@ -19,7 +19,6 @@
 called ImageOverlayTemplate, defined in the Page.Resources section of the XAML file.
 
 The data template is defined to display a CustomDataObject object (same type as in above sample). -->
-        
         <DataTemplate x:Name="ImageOverlayTemplate" x:DataType="local:Project">
             <Grid Width="384" Height="216">
                 <Image Source="{x:Bind ImageLocation}" Stretch="Uniform"/>
@@ -37,27 +36,69 @@ The data template is defined to display a CustomDataObject object (same type as 
 
         <StackPanel Margin="36,96,36,24" HorizontalAlignment="Left">
             <TextBlock HorizontalAlignment="Left" Text="全局设置" Style="{StaticResource SubtitleTextBlockStyle}" Margin="24,24,24,6"/>
-            <Button Content="恢复默认" Margin="36,6,36,12" Click="OpenDefult">
-                <Button.Flyout>
-                    <Flyout>
-                        <StackPanel>
-                            <TextBlock Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Center" Text="将把所有设置恢复到默认状态，此操作不可逆，确认继续？" x:Name="DefultWarning" Margin="0,0,0,12" />
-                            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Center" Text="点击对话框以外区域以关闭对话框" Margin="0,0,0,12" />
-                            <Button Click="SetDefult" Content="我知道我在做什么！" HorizontalAlignment="Center" x:Name="DefultButton"/>
-                        </StackPanel>
-                    </Flyout>
-                </Button.Flyout>
-            </Button>
-            <Expander HorizontalAlignment="Left" Header="语音设置" Margin="36,12,36,24">
-                <StackPanel>
-                    <Slider Width="400" Minimum="0" Maximum="100" StepFrequency="1" HorizontalAlignment="Center"
+            <Button Content="恢复默认" Margin="36,6" Click="OpenDefult"/>
+            <DropDownButton Margin="36,6">
+                <DropDownButton.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="默认页面:"/>
+                        <TextBlock x:Name="DefautPageOutput"/>
+                    </StackPanel>
+                </DropDownButton.Content>
+                <DropDownButton.Flyout>
+                    <MenuFlyout Placement="BottomEdgeAlignedLeft">
+                        <MenuFlyoutItem Tag="C1OS.HomePage" Icon="Home" Text="主页" Click="ChangeDefaultPage"/>
+                        <MenuFlyoutItem Tag="C1OS.CallPage" Icon="People" Text="点名" Click="ChangeDefaultPage"/>
+                        <MenuFlyoutItem Tag="C1OS.RingPage" Text="考试" Click="ChangeDefaultPage">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xEA8F;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Tag="C1OS.DatePage" Text="倒计时" Click="ChangeDefaultPage">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xEC92;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Tag="C1OS.CardPage" Icon="Contact2" Text="抽签" Click="ChangeDefaultPage"/>
+                        <MenuFlyoutItem Tag="C1OS.MorePage" Icon="More" Text="更多" Click="ChangeDefaultPage"/>
+                        <MenuFlyoutItem Tag="C1OS.EarthOnline" Icon="Globe" Text="天眼地图" Click="ChangeDefaultPage"/>
+                        <MenuFlyoutItem Tag="C1OS.PTable" Text="元素周期表" Click="ChangeDefaultPage">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xF0E2;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Tag="C1OS.Translator" Text="翻译" Click="ChangeDefaultPage">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xF2B7;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Tag="C1OS.HelpPage" Icon="Help" Text="帮助" Click="ChangeDefaultPage"/>
+                        <MenuFlyoutItem Tag="C1OS.VersionPage" Icon="PostUpdate" Text="版本" Click="ChangeDefaultPage"/>
+                        <MenuFlyoutItem Tag="C1OS.SettingsPage" Text="设置" Click="ChangeDefaultPage">
+                        <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE713;"/>
+                        </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </DropDownButton.Flyout>
+            </DropDownButton>
+            <Expander HorizontalAlignment="Left" Header="语音设置" Margin="36,5,36,24">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Slider Width="400" Minimum="0" Maximum="100" StepFrequency="1" HorizontalAlignment="Center"
                                 SmallChange="1"  Header="音量"  TickFrequency="1" TickPlacement="Outside" SnapsTo="StepValues"
                                 ValueChanged="SetSpeakerVolume" x:Name="SpeakerVolumeSlider"/>
-                    <Slider Width="400" Minimum="-10" Maximum="10" StepFrequency="1" HorizontalAlignment="Center"
+                        <Slider Width="400" Minimum="-10" Maximum="10" StepFrequency="1" HorizontalAlignment="Center"
                                 SmallChange="1"  Header="语速"  TickFrequency="1" TickPlacement="Outside" SnapsTo="StepValues"
                                 ValueChanged="SetSpeakerRate" x:Name="SpeakerRateSlider"/>
-                    <TextBlock Text="提示：请选择一个可以朗读中文的语音角色，否则无法进行语音播报" Margin="6" HorizontalAlignment="Center"/>
-                    <ListView ItemTemplate="{StaticResource SpeakerTemplate}" x:Name="SpeakerSelect" Height="164" SelectionMode="Single" SelectionChanged="ChangeSpeaker"/>
+                        <TextBlock Text="提示：请选择一个可以朗读中文的语音角色，否则无法进行语音播报" Margin="6" HorizontalAlignment="Center"/>
+                        <ListView ItemTemplate="{StaticResource SpeakerTemplate}" x:Name="SpeakerSelect" Height="164" SelectionMode="Single" SelectionChanged="ChangeSpeaker"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBox Width="400" MaxHeight="400" Height="200" x:Name="SpeakerInput" AcceptsReturn="True" Text="欢迎使用壹班专用系统！&#13;Welcome to use C1OS!"/>
+                        <Button Click="Speak" Margin="6">
+                            <FontIcon Glyph="&#xE767;" />
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
             </Expander>
             <TextBlock HorizontalAlignment="Left" Text="个性化" Style="{StaticResource SubtitleTextBlockStyle}" Margin="24,24,24,6"/>
