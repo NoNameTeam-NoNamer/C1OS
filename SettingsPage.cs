@@ -1102,6 +1102,10 @@ Windows.Storage.ApplicationData.Current.LocalSettings;
                  {
                     SpeakerLoading = true;
                     SpeakerSelect.SelectedIndex = Speakers.IndexOf(Speaker);
+                    if (SpeakerSelect.SelectedIndex == -1)
+                    {
+                        SpeakerLoading = false;
+                    }
                  }
                  catch (Exception)
                  {

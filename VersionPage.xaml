@@ -14,7 +14,7 @@
         <TextBlock x:Name="pageTitle" Text="版本"
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
-            <TextBlock HorizontalAlignment="Center" Text="当前版本：2.0.0（预览版）" FontSize="24" Margin="6"/>
+            <TextBlock HorizontalAlignment="Center" Text="当前版本：2.0.0-rc.2" FontSize="24" Margin="6"/>
             <TextBlock HorizontalAlignment="Center">
             <Run FontFamily="楷体" Foreground="DarkGray">
             系统开发中，若发现BUG请及时反馈！</Run>
@@ -65,9 +65,16 @@
             <Expander Header="更新日志" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <ScrollViewer MaxHeight="200" MinHeight="50" Width="450">
                     <TextBlock HorizontalAlignment="Left">
+                        2025.2.26
+                        <LineBreak/>
+                        2.0.0-rc.2
+                        <LineBreak/>
+                        修复首次选择语音角色时没有语音预览的BUG
+                        <LineBreak/>
+                        <LineBreak/>
                         2025.2.25
                         <LineBreak/>
-                        2.0.0（预览版）
+                        2.0.0-rc.1
                         <LineBreak/>
                         添加隐藏功能
                         <LineBreak/>
