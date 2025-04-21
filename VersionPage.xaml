@@ -14,7 +14,7 @@
         <TextBlock x:Name="pageTitle" Text="版本"
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
-            <TextBlock HorizontalAlignment="Center" Text="当前版本：2.0.0-rc.2" FontSize="24" Margin="6"/>
+            <TextBlock HorizontalAlignment="Center" Text="当前版本：2.0.0-rc.3" FontSize="24" Margin="6"/>
             <TextBlock HorizontalAlignment="Center">
             <Run FontFamily="楷体" Foreground="DarkGray">
             系统开发中，若发现BUG请及时反馈！</Run>
@@ -65,6 +65,13 @@
             <Expander Header="更新日志" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <ScrollViewer MaxHeight="200" MinHeight="50" Width="450">
                     <TextBlock HorizontalAlignment="Left">
+                        2025.4.22
+                        <LineBreak/>
+                        2.0.0-rc.3更新（无更新包推送）
+                        <LineBreak/>
+                        修复了打开程序后第一次点名时的设置读取不生效问题
+                        <LineBreak/>
+                        自定义背景材质和颜色测试
                         2025.2.26
                         <LineBreak/>
                         2.0.0-rc.2

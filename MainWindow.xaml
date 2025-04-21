@@ -32,54 +32,51 @@
          ExpandedModeThresholdWidth="1000"
          SelectionFollowsFocus="Disabled"
          IsTabStop="False">
-            <NavigationView.MenuItems>
+                <NavigationView.MenuItems>
 
-                <NavigationViewItem Tag="C1OS.HomePage" Icon="Home" Content="主页"/>
-                <NavigationViewItemSeparator/>
-                <NavigationViewItemHeader Content="功能"/>
-                <NavigationViewItem Tag="C1OS.CallPage" Icon="People" Content="点名"/>
-                <NavigationViewItem Tag="C1OS.RingPage" Content="考试">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEA8F;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem Tag="C1OS.DatePage" Content="倒计时">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEC92;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem Tag="C1OS.CardPage" Icon="Contact2" Content="抽签"/>
+                    <NavigationViewItem Tag="C1OS.HomePage" Icon="Home" Content="主页"/>
+                    <NavigationViewItemSeparator/>
+                    <NavigationViewItemHeader Content="功能"/>
+                    <NavigationViewItem Tag="C1OS.CallPage" Icon="People" Content="点名"/>
+                    <NavigationViewItem Tag="C1OS.RingPage" Content="考试">
+                        <NavigationViewItem.Icon>
+                            <FontIcon Glyph="&#xEA8F;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                    <NavigationViewItem Tag="C1OS.DatePage" Content="倒计时">
+                        <NavigationViewItem.Icon>
+                            <FontIcon Glyph="&#xEC92;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                    <NavigationViewItem Tag="C1OS.CardPage" Icon="Contact2" Content="抽签"/>
 
-                <NavigationViewItem Tag="C1OS.MorePage" Icon="More" Content="更多"/>
+                    <NavigationViewItem Tag="C1OS.MorePage" Icon="More" Content="更多"/>
 
-                <NavigationViewItemSeparator/>
-                <NavigationViewItemHeader Content="网页"/>
-                <NavigationViewItem Tag="C1OS.EarthOnline" Icon="Globe" Content="天眼地图"/>
-                <NavigationViewItem Tag="C1OS.PTable" Content="元素周期表">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xF0E2;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem Tag="C1OS.Translator" Content="翻译">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xF2B7;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                    <NavigationViewItemSeparator/>
+                    <NavigationViewItemHeader Content="网页"/>
+                    <NavigationViewItem Tag="C1OS.EarthOnline" Icon="Globe" Content="天眼地图"/>
+                    <NavigationViewItem Tag="C1OS.PTable" Content="元素周期表">
+                        <NavigationViewItem.Icon>
+                            <FontIcon Glyph="&#xF0E2;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                    <NavigationViewItem Tag="C1OS.Translator" Content="翻译">
+                        <NavigationViewItem.Icon>
+                            <FontIcon Glyph="&#xF2B7;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
 
-                <NavigationViewItemSeparator/>
-                <NavigationViewItemHeader Content="系统"/>
-                <NavigationViewItem Tag="C1OS.HelpPage" Icon="Help" Content="帮助"/>
-                <NavigationViewItem Tag="C1OS.VersionPage" Icon="PostUpdate" Content="版本"/>
-            </NavigationView.MenuItems>
+                    <NavigationViewItemSeparator/>
+                    <NavigationViewItemHeader Content="系统"/>
+                    <NavigationViewItem Tag="C1OS.HelpPage" Icon="Help" Content="帮助"/>
+                    <NavigationViewItem Tag="C1OS.VersionPage" Icon="PostUpdate" Content="版本"/>
+                </NavigationView.MenuItems>
 
-            <ScrollViewer>
-                <Frame x:Name="ContentFrame" IsTabStop="True"
+                <ScrollViewer>
+                    <Frame x:Name="ContentFrame" IsTabStop="True"
     NavigationFailed="ContentFrame_NavigationFailed"/>
-            </ScrollViewer>
-        </NavigationView>
-            </Grid>
+                </ScrollViewer>
+            </NavigationView>
+        </Grid>
     </Grid>
-    <Window.SystemBackdrop>
-        <MicaBackdrop/>
-    </Window.SystemBackdrop>
 </Window>

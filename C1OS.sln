@@ -20,7 +20,6 @@ Global
 		{C5C5323E-C6E7-419D-B6C7-B38E041DBE57}.Debug|x64.Build.0 = Debug|x64
 		{C5C5323E-C6E7-419D-B6C7-B38E041DBE57}.Debug|x64.Deploy.0 = Debug|x64
 		{C5C5323E-C6E7-419D-B6C7-B38E041DBE57}.Release|x64.ActiveCfg = Release|x64
-		{C5C5323E-C6E7-419D-B6C7-B38E041DBE57}.Release|x64.Build.0 = Release|x64
 		{C5C5323E-C6E7-419D-B6C7-B38E041DBE57}.Release|x64.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution

@@ -57,7 +57,7 @@ namespace C1OS
             this.InitializeComponent();
             speaker.SetOutputToDefaultAudioDevice();
         }
-        async void ReadCallMode()
+        async Task ReadCallMode()
         {
             try
             {
@@ -86,7 +86,7 @@ namespace C1OS
             }
         }
 
-        async void ReadCallSpeed()
+        async Task ReadCallSpeed()
         {
             try
             {
@@ -164,14 +164,19 @@ namespace C1OS
 
             }
         }
-        
-        private void CALL(object sender, RoutedEventArgs e)
+
+        private async void CALL(object sender, RoutedEventArgs e)
         {
-            ReadCallMode();
-            ReadCallSpeed();
-            ReadSpeaker();
-            ReadSpeakerVolume();
-            ReadSpeakerRate();
+            await CALL_Task();
+        }
+
+        private async Task CALL_Task()
+        {
+            await ReadCallMode();
+            await ReadCallSpeed();
+            await ReadSpeaker();
+            await ReadSpeakerVolume();
+            await ReadSpeakerRate();
             if (Caller.Content.ToString() == "µãÃû")
             {
                 NameOut.Visibility = Visibility.Visible;
@@ -188,7 +193,7 @@ namespace C1OS
             }
         }
 
-        async void ReadSpeaker()
+        async Task ReadSpeaker()
         {
             try
             {
@@ -208,7 +213,7 @@ namespace C1OS
             catch (Exception) { }
         }
 
-        static async void ReadSpeakerVolume()
+        static async Task ReadSpeakerVolume()
         {
             try
             {
@@ -233,7 +238,7 @@ namespace C1OS
             }
         }
 
-        static async void ReadSpeakerRate()
+        static async Task ReadSpeakerRate()
         {
             try
             {

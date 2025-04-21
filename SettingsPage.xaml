@@ -74,9 +74,9 @@ The data template is defined to display a CustomDataObject object (same type as 
                         <MenuFlyoutItem Tag="C1OS.HelpPage" Icon="Help" Text="帮助" Click="ChangeDefaultPage"/>
                         <MenuFlyoutItem Tag="C1OS.VersionPage" Icon="PostUpdate" Text="版本" Click="ChangeDefaultPage"/>
                         <MenuFlyoutItem Tag="C1OS.SettingsPage" Text="设置" Click="ChangeDefaultPage">
-                        <MenuFlyoutItem.Icon>
+                            <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE713;"/>
-                        </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
                     </MenuFlyout>
                 </DropDownButton.Flyout>
@@ -107,7 +107,7 @@ The data template is defined to display a CustomDataObject object (same type as 
                 <RadioButton Content="深色" Checked="Dark" x:Name="DButton" Margin="3"/>
                 <RadioButton Content="跟随系统" Checked="LDSystem" x:Name="LDSButton" Margin="3"/>
             </RadioButtons>
-            <CheckBox Content="背景颜色" Margin="36,6,36,6" Click="ChangeAppBackgroundColor" x:Name="EnableAppColor" Visibility="Collapsed"/>
+            <CheckBox Content="背景颜色" Margin="36,6,36,6" Click="ChangeAppBackgroundColor" x:Name="EnableAppColor"/>
             <ColorPicker
                ColorChanged="SaveColor"
                 Visibility="Collapsed"
@@ -157,9 +157,7 @@ some parts of the GridViewItems (i.e. the margins). -->
                     </GridView>
 
                 </StackPanel>
-        </Expander>
-        
-
+            </Expander>
             <TextBlock HorizontalAlignment="Left" Text="主页" Style="{StaticResource SubtitleTextBlockStyle}" Margin="24"/>
             <ToggleSwitch Header="标语" OffContent="关闭" OnContent="打开" x:Name="MottoSelector" Toggled="MottoSelect" Margin="36,12,36,24"/>
 
@@ -173,22 +171,6 @@ some parts of the GridViewItems (i.e. the margins). -->
                         ValueChanged="SetCallSpeed"
                         x:Name="CallSpeedSlider"/>
             </StackPanel>
-
-
-
-            <!--TextBlock HorizontalAlignment="Left" Text="倒计时" Style="{StaticResource SubtitleTextBlockStyle}" Margin="24"/>
-            <Expander HorizontalAlignment="Left" Header="设置中考时间" Margin="36,12,36,24">
-                <StackPanel VerticalAlignment="Center">
-                    <DatePicker x:Name="arrivalDatePicker" Header="日期" HorizontalAlignment="Left"
-                DayFormat="{}{day.integer} ({dayofweek.abbreviated})"
-                SelectedDateChanged="ArrivalDatePicker_SelectedDateChanged"/>
-                    <TextBlock>
-            <LineBreak/>
-                    </TextBlock>
-                    <TimePicker ClockIdentifier="24HourClock" HorizontalAlignment="Left" Header="时间" x:Name="arrivalTimePicker" SelectedTimeChanged="ArrivalTimePicker_SelectedTimeChanged"/>
-                </StackPanel>
-            </Expander-->
         </StackPanel>
-
     </Grid>
 </Page>
