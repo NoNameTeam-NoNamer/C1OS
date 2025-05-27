@@ -14,7 +14,7 @@
         <TextBlock x:Name="pageTitle" Text="版本"
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
-            <TextBlock HorizontalAlignment="Center" Text="当前版本：2.0.0-rc.3" FontSize="24" Margin="6"/>
+            <TextBlock HorizontalAlignment="Center" Text="当前版本：2.0.0-rc.4" FontSize="24" Margin="6"/>
             <TextBlock HorizontalAlignment="Center">
             <Run FontFamily="楷体" Foreground="DarkGray">
             系统开发中，若发现BUG请及时反馈！</Run>
@@ -65,9 +65,26 @@
             <Expander Header="更新日志" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <ScrollViewer MaxHeight="200" MinHeight="50" Width="450">
                     <TextBlock HorizontalAlignment="Left">
+                        2025.5.28
+                        <LineBreak/>
+                        2.0.0-rc.4(内部版本1.12.0)
+                        <LineBreak/>
+                        点名器老虎机新版本秘密更新！如何打开？设置，启动！
+                        <LineBreak/>
+                        添加倒计时移位功能！
+                        <LineBreak/>
+                        现在允许设置倒计时为过去的时间！
+                        <LineBreak/>
+                        加入了新的调试代码！
+                        <LineBreak/>
+                        No Name Team动画标识现已正式上线！展开查看商标即可查看！
+                        <LineBreak/>
+                        修复了更多的BUG！
+                        <LineBreak/>
+                        <LineBreak/>
                         2025.4.22
                         <LineBreak/>
-                        2.0.0-rc.3更新（无更新包推送）
+                        2.0.0-rc.3（无更新包推送）
                         <LineBreak/>
                         修复了打开程序后第一次点名时的设置读取不生效问题
                         <LineBreak/>
@@ -593,14 +610,9 @@
                     </TextBlock>
                 </ScrollViewer>
             </Expander>
-            <Expander Header="查看商标" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Assets/No Name Team.png" MaxHeight="300"/>
-                        <TextBlock Text="©" FontSize="48"/>
-                    </StackPanel>
-                    <TextBlock Text="使用Blender建模、着色和渲染" FontSize="12" Margin="24"/>
-                </StackPanel>
+            <Expander Header="查看商标（声音警告！）" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500" Expanding="PlayVideo">
+                <MediaPlayerElement Source="ms-appx:///Assets/NoNameTeam.mp4"
+                    AutoPlay="False" x:Name="VideoPlayer"/>
             </Expander>
             <StackPanel Orientation="Vertical" Margin="24" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

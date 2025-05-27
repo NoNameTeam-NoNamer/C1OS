@@ -29,6 +29,7 @@ using System.Speech.Synthesis;
 using System.Threading;
 using static System.Net.Mime.MediaTypeNames;
 using Application = Microsoft.UI.Xaml.Application;
+using System.Drawing.Drawing2D;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -69,6 +70,7 @@ namespace C1OS
             ReadLD();
             ReadMotto();
             ReadCallMode();
+            ReadCallVersion();
             ReadBGOpacity();
             PopulateProjects();
             PopulateSpeakers();
@@ -93,7 +95,7 @@ namespace C1OS
             SpeakerSelect.ItemsSource = Speakers;
         }
 
-        private void Speak(object sender, RoutedEventArgs e)
+        private async void Speak(object sender, RoutedEventArgs e)
         {
             speaker.SpeakAsyncCancelAll();
             if (SpeakerInput.Text == "//No Name Team//")
@@ -128,6 +130,22 @@ namespace C1OS
                 Fun = true;
                 Moving = true;
                 PopulateProjects();
+                SpeakerInput.Text = "指令已执行！";
+            }
+            else if (SpeakerInput.Text == "//Settings//")
+            {
+                Windows.Storage.StorageFolder localFolder =
+                 Windows.Storage.ApplicationData.Current.LocalFolder;
+                StorageFile debug = await localFolder.CreateFileAsync("请读我！.txt",
+               CreationCollisionOption.ReplaceExisting);
+                await FileIO.WriteTextAsync(debug, "请注意！这里是C1OS配置文件目录！非专业人员勿动！否则可能导致您的在C1OS的数据丢失或损坏！");
+                // 打开资源管理器并选中文件
+                var processInfo = new ProcessStartInfo
+                {
+                    FileName = "explorer.exe",
+                    Arguments = $"/select, \"{debug.Path}\""
+                };
+                Process.Start(processInfo);
                 SpeakerInput.Text = "指令已执行！";
             }
             if (SpeakerInput.Text != "")
@@ -674,6 +692,20 @@ namespace C1OS
             await FileIO.WriteTextAsync(CallModeData, ModeS);
         }
 
+        public static async void SaveCallVersion(bool Version)
+        {
+            _ =
+    Windows.Storage.ApplicationData.Current.LocalSettings;
+            Windows.Storage.StorageFolder localFolder =
+                 Windows.Storage.ApplicationData.Current.LocalFolder;
+
+            String VersionS = Version.ToString();
+
+            StorageFile CallVersionData = await localFolder.CreateFileAsync("CallVersionSetting.ini",
+               CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(CallVersionData, VersionS);
+        }
+
         public static async void SaveCallSpeed(byte Speed)
         {
             _ =
@@ -771,6 +803,18 @@ namespace C1OS
             }
         }
 
+        private void CallVersionSelect(object sender, RoutedEventArgs e)
+        {
+            if (CallVersionSelector.IsOn == true)
+            {
+                SaveCallVersion(true);
+            }
+            else
+            {
+                SaveCallVersion(false);
+            }
+        }
+
         private void MottoSelect(object sender, RoutedEventArgs e)
         {
             if (MottoSelector.IsOn == true)
@@ -802,6 +846,7 @@ namespace C1OS
             DButton.IsChecked = false;
             LDSButton.IsChecked = true;
             CallModeSelector.IsOn = false;
+            CallVersionSelector.IsOn = false;
             CallSpeedSlider.Value = 75;
             MottoSelector.IsOn = false;
             BGOpacitySlider.Value = 0.5;
@@ -891,6 +936,35 @@ Windows.Storage.ApplicationData.Current.LocalSettings;
             {
                 // ModeS not found
                 CallModeSelector.IsOn = false;
+            }
+        }
+
+        async void ReadCallVersion()
+        {
+            try
+            {
+                Windows.Storage.ApplicationDataContainer localSettings =
+               Windows.Storage.ApplicationData.Current.LocalSettings;
+                Windows.Storage.StorageFolder localFolder =
+                     Windows.Storage.ApplicationData.Current.LocalFolder;
+
+                StorageFile CallVersionData = await localFolder.GetFileAsync("CallVersionSetting.ini");
+                String VersionS = await FileIO.ReadTextAsync(CallVersionData);
+                // Data is contained in VersionS
+                if (VersionS == "True")
+                {
+                    CallVersionSelector.IsOn = true;
+                }
+                else
+                {
+                    CallVersionSelector.IsOn = false;
+                }
+
+            }
+            catch (Exception)
+            {
+                // VersionS not found
+                CallVersionSelector.IsOn = false;
             }
         }
 

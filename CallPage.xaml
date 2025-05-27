@@ -6,6 +6,7 @@
     xmlns:local="using:C1OS"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled"
     Background="Transparent">
@@ -13,15 +14,112 @@
     <Grid>
         <TextBlock x:Name="pageTitle" Text="点名"
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
-        <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
-            <TextBlock HorizontalAlignment="Center" x:Name="NameOut" Style="{StaticResource DisplayTextBlockStyle}" Margin="16">
-                <TextBlock.Transitions>
-                    <TransitionCollection>
-                        <RepositionThemeTransition />
-                    </TransitionCollection>
-                </TextBlock.Transitions>
-            </TextBlock>
-            <Button HorizontalAlignment="Center" Content="点名" Click="CALL" x:Name="Caller" FontSize="32"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,48,0,0">
+           <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Top"
+                    x:Name="FlipViews"
+                    Visibility="Collapsed"
+                    Margin="12"
+                    Spacing="20">
+
+            <!-- 转盘1 -->
+            <controls:FlipView x:Name="Reel1" 
+                              Width="100" 
+                               IsEnabled="False" Background="{ThemeResource  LayerOnMicaBaseAltFillColorDefaultBrush}" 
+BorderBrush="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+BorderThickness="1" 
+CornerRadius="4" 
+                              Height="200">
+                <controls:FlipView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </controls:FlipView.ItemsPanel>
+                <controls:FlipView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" 
+                                  FontSize="48"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Margin="0,10"/>
+                    </DataTemplate>
+                </controls:FlipView.ItemTemplate>
+            </controls:FlipView>
+
+            <!-- 其他三个转盘保持相同结构 -->
+            <controls:FlipView x:Name="Reel2" Width="100" Height="200" IsEnabled="False" Background="{ThemeResource  LayerOnMicaBaseAltFillColorDefaultBrush}" 
+BorderBrush="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+BorderThickness="1" 
+CornerRadius="4" >
+                <!-- 相同ItemsPanel配置 -->
+                <controls:FlipView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </controls:FlipView.ItemsPanel>
+                <controls:FlipView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" 
+                  FontSize="48"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Margin="0,10"/>
+                    </DataTemplate>
+                </controls:FlipView.ItemTemplate>
+            </controls:FlipView>
+
+            <controls:FlipView x:Name="Reel3" Width="100" Height="200" IsEnabled="False" Background="{ThemeResource  LayerOnMicaBaseAltFillColorDefaultBrush}" 
+BorderBrush="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+BorderThickness="1" 
+CornerRadius="4" >
+                <!-- 相同ItemsPanel配置 -->
+                <controls:FlipView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </controls:FlipView.ItemsPanel>
+                <controls:FlipView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" 
+                  FontSize="48"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Margin="0,10"/>
+                    </DataTemplate>
+                </controls:FlipView.ItemTemplate>
+            </controls:FlipView>
+
+            <controls:FlipView x:Name="Reel4" Width="100" Height="200" IsEnabled="False" Background="{ThemeResource  LayerOnMicaBaseAltFillColorDefaultBrush}" 
+BorderBrush="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+BorderThickness="1" 
+CornerRadius="4" >
+                <!-- 相同ItemsPanel配置 -->
+                <controls:FlipView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </controls:FlipView.ItemsPanel>
+                <controls:FlipView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" 
+                  FontSize="48"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Margin="0,10"/>
+                    </DataTemplate>
+                </controls:FlipView.ItemTemplate>
+            </controls:FlipView>
         </StackPanel>
+        <TextBlock HorizontalAlignment="Center" x:Name="NameOut" Style="{StaticResource DisplayTextBlockStyle}" Margin="16" Visibility="Collapsed">
+            <TextBlock.Transitions>
+                <TransitionCollection>
+                    <RepositionThemeTransition />
+                </TransitionCollection>
+            </TextBlock.Transitions>
+        </TextBlock>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="点名" Click="CALL" x:Name="Caller" FontSize="32" Margin="16"/> 
+        </StackPanel>
+        
     </Grid>
 </Page>

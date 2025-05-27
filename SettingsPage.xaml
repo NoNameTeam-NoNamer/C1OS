@@ -107,7 +107,7 @@ The data template is defined to display a CustomDataObject object (same type as 
                 <RadioButton Content="深色" Checked="Dark" x:Name="DButton" Margin="3"/>
                 <RadioButton Content="跟随系统" Checked="LDSystem" x:Name="LDSButton" Margin="3"/>
             </RadioButtons>
-            <CheckBox Content="背景颜色" Margin="36,6,36,6" Click="ChangeAppBackgroundColor" x:Name="EnableAppColor"/>
+            <CheckBox  Visibility="Collapsed" Content="背景颜色" Margin="36,6,36,6" Click="ChangeAppBackgroundColor" x:Name="EnableAppColor"/>
             <ColorPicker
                ColorChanged="SaveColor"
                 Visibility="Collapsed"
@@ -162,10 +162,11 @@ some parts of the GridViewItems (i.e. the margins). -->
             <ToggleSwitch Header="标语" OffContent="关闭" OnContent="打开" x:Name="MottoSelector" Toggled="MottoSelect" Margin="36,12,36,24"/>
 
             <TextBlock HorizontalAlignment="Left" Text="点名" Style="{StaticResource SubtitleTextBlockStyle}" Margin="24"/>
-            <ToggleSwitch Header="模式" OffContent="顺序" OnContent="随机" x:Name="CallModeSelector" Toggled="CallModeSelect" Margin="36,12,36,24"/>
-            <StackPanel Orientation="Horizontal" Margin="36,12,36,24">
+            <ToggleSwitch Header="排序（旧版）" OffContent="顺序" OnContent="随机" x:Name="CallModeSelector" Toggled="CallModeSelect" Margin="36,12,36,6"/>
+            <ToggleSwitch Header="模式" OffContent="旧版" OnContent="新版" x:Name="CallVersionSelector" Toggled="CallVersionSelect" Margin="36,6,36,6"/>
+            <StackPanel Orientation="Horizontal" Margin="36,6,36,24">
                 <Slider Width="400" Minimum="25" Maximum="175" StepFrequency="1"
-        SmallChange="1"  Header="点名间隔（ms）"      TickFrequency="10"
+        SmallChange="1"  Header="点名间隔（ms）（新版模式下时间会变为¾倍）"      TickFrequency="10"
      TickPlacement="Outside"
      SnapsTo="StepValues"
                         ValueChanged="SetCallSpeed"

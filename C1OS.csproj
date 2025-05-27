@@ -10,14 +10,14 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <PackageIcon>901.png</PackageIcon>
-    <AssemblyVersion>1.10.4</AssemblyVersion>
-    <FileVersion>1.10.4</FileVersion>
+    <AssemblyVersion>1.12.0</AssemblyVersion>
+    <FileVersion>1.12.0</FileVersion>
     <Copyright>©No Name Team 2025,all rights reserved.</Copyright>
     <Description>新版一班专用系统</Description>
     <Product>C1OS</Product>
     <Company>No Name Team</Company>
     <Authors>某个不想起名的人,另一个不想起名的人</Authors>
-    <Version>2.0.0-rc.2</Version>
+    <Version>2.0.0-rc.4</Version>
     <DefaultLanguage>zh-cn</DefaultLanguage>
     <PackageCertificateThumbprint>9C8341B5503ECF89C1954A531D4DF0574701D102</PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>

@@ -200,6 +200,10 @@ namespace C1OS
             Process.Start(processInfo);
         }
 
+        private void PlayVideo(object sender, ExpanderExpandingEventArgs e) 
+        {
+            VideoPlayer.MediaPlayer.Play();
+        }
 
         private async void AddInstaller(object sender, RoutedEventArgs e)
         {
