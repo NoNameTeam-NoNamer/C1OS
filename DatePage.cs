@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System.Security.Cryptography;
 using Windows.Storage;
 using System.Diagnostics.Eventing.Reader;
+using System.Diagnostics;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -43,24 +44,30 @@ namespace C1OS
         {
             this.InitializeComponent();
             // Set minimum to the current year.
-            arrivalDatePicker.MinYear = DateTimeOffset.Now;
+            arrivalDatePicker.MinYear = DateTimeOffset.Parse("1970/01/01");
             arrivalDatePicker.SelectedDate = DateTime.Now.Date;
             arrivalTimePicker.SelectedTime = DateTime.Now.TimeOfDay;
             Read();
             DispatcherTimerSetup();
+            
         }
 
         private void SelectTimer(object sender, SelectionChangedEventArgs e)
         {
+            Editor.Visibility = Visibility.Collapsed;
             if (TimerSelect.SelectedIndex == -1)
             {
                 EditButton.IsEnabled = false;
                 DeleteButton.IsEnabled = false;
+                Upper.IsEnabled = false;
+                Downer.IsEnabled = false;
             }
             else
             {
                 EditButton.IsEnabled = true;
                 DeleteButton.IsEnabled = true;
+                Upper.IsEnabled = true;
+                Downer.IsEnabled = true;
             }
         }
 
@@ -97,6 +104,33 @@ namespace C1OS
             TimerSelect.SelectedIndex = -1;
             Selected = -1;
             Editor.Visibility = Visibility.Visible;
+        }
+
+        private void Up(object sender, RoutedEventArgs e)
+        {
+            var fun = TimerSelect.SelectedIndex;
+            if (TimerSelect.SelectedIndex>=1) 
+            {
+                (Timers[fun], Timers[fun - 1]) = (Timers[fun-1], Timers[fun]);
+                Save();
+                TimerSelect.ItemsSource = null;
+                TimerSelect.ItemsSource = Timers;
+                TimerSelect.SelectedIndex = fun - 1;
+            }
+
+        }
+
+        private void Down(object sender, RoutedEventArgs e)
+        {
+            var fun = TimerSelect.SelectedIndex;
+            if (TimerSelect.SelectedIndex < Timers.Count-1)
+            {
+                (Timers[fun], Timers[fun + 1]) = (Timers[fun + 1], Timers[fun]);
+                Save();
+                TimerSelect.ItemsSource = null;
+                TimerSelect.ItemsSource = Timers;
+                TimerSelect.SelectedIndex = fun + 1;
+            }
         }
 
         private void EditClick(object sender, RoutedEventArgs e)
@@ -158,8 +192,6 @@ namespace C1OS
 
         private void Create(object sender, RoutedEventArgs e)
         {
-            if (VerifyDateIsFuture(arrivalDateTime) == true)
-            {
                 if (TimerNameSet.Text != String.Empty)
                 {
                     if (TimerNameSet.Text.Contains('　'))
@@ -200,13 +232,6 @@ namespace C1OS
                 {
                     arrivalText.Text = "请输入名称！";
                 }
-            }
-            else
-            {
-                arrivalText.Text = "指定时间应当晚于现在！";
-            }
-
-
         }
 
         private void ArrivalDatePicker_SelectedDateChanged(DatePicker sender, DatePickerSelectedValueChangedEventArgs args)
@@ -385,7 +410,7 @@ namespace C1OS
                Windows.Storage.ApplicationData.Current.LocalSettings;
                 Windows.Storage.StorageFolder localFolder =
                      Windows.Storage.ApplicationData.Current.LocalFolder;
-
+                
                 StorageFile DateData = await localFolder.GetFileAsync("Date.ini");
                 String DateS = await FileIO.ReadTextAsync(DateData);
                 // Data is contained in DateS
@@ -426,3 +451,4 @@ namespace C1OS
         }
     }
 }
+

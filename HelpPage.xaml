@@ -9,11 +9,10 @@
     mc:Ignorable="d"
     NavigationCacheMode="Enabled"
     Background="Transparent">
-
+ 
     <Grid>
         <TextBlock x:Name="pageTitle" Text="帮助"
                Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
-
         <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
             <TextBlock HorizontalAlignment="Center"  FontSize="16">
                 如果使用时有疑惑的地方，请在下面的自助问答中寻找，找不到再询问开发人员

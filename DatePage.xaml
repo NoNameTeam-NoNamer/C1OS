@@ -53,6 +53,9 @@
             <StackPanel Visibility="Collapsed" x:Name="TimerEditor">
                 <ListView ItemTemplate="{StaticResource TimerTemplate}" x:Name="TimerSelect" MaxHeight="164" MaxWidth="500" SelectionMode="Single" SelectionChanged="SelectTimer"/>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button x:Name="Upper" Click="Up" HorizontalAlignment="Center" Margin="12" >
+                        <FontIcon Glyph="&#xE70E;" />
+                    </Button>
                     <Button Click="CreateClick" HorizontalAlignment="Center" Margin="12">
                         <FontIcon Glyph="&#xE710;" />
                     </Button>
@@ -61,6 +64,9 @@
                     </Button>
                     <Button x:Name="DeleteButton" Click="DeleteClick" HorizontalAlignment="Center" Margin="12" IsEnabled="False">
                         <FontIcon Glyph="&#xE74D;" />
+                    </Button>
+                    <Button x:Name="Downer" Click="Down" HorizontalAlignment="Center" Margin="12" >
+                        <FontIcon Glyph="&#xE70D;" />
                     </Button>
                 </StackPanel>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="Editor">

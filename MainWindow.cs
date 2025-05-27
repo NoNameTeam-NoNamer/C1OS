@@ -83,7 +83,7 @@ class WindowsSystemDispatcherQueueHelper
 #pragma warning restore CA2211 // 非常量字段应当不可见
 #pragma warning restore IDE0079 // 请删除不必要的忽略
         private readonly Microsoft.UI.Windowing.AppWindow m_AppWindow;
-        private System.Drawing.Color BackGroundColor = new();
+       // private System.Drawing.Color BackGroundColor = new();
 
         
         WindowsSystemDispatcherQueueHelper m_wsdqHelper; // See separate sample below for implementation
