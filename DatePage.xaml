@@ -19,9 +19,7 @@
         </DataTemplate>
     </Page.Resources>
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="倒计时"
-               Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
-        <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
+        <StackPanel VerticalAlignment="Center" Margin="36,24">
             <StackPanel VerticalAlignment="Center" x:Name="DeadTimeShow">
                 <TextBlock HorizontalAlignment="Center" x:Name="DeadTimeOutput" FontFamily="楷体" FontSize="50"  Visibility="Collapsed"
                FontStyle="Normal" TextWrapping="WrapWholeWords" CharacterSpacing="20" Margin="24">

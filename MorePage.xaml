@@ -11,9 +11,7 @@
     Background="Transparent">
 
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="更多"
-               Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
-        <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
+        <StackPanel VerticalAlignment="Center" Margin="36,24">
             <Button Content="王老师希沃白板密码获取" Click="GetSeewoPassword" x:Name="SeewoPasswordButton" HorizontalAlignment="Center"/>
             <TeachingTip x:Name="ToggleThemeTeachingTip1"
     Target="{x:Bind SeewoPasswordButton}"

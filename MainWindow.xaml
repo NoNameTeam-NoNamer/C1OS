@@ -6,6 +6,7 @@
     xmlns:local="using:C1OS"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
     mc:Ignorable="d">
     <Grid>
         <Grid.Background>
@@ -26,12 +27,18 @@
          IsSettingsVisible="True"
          IsBackEnabled="True"
          IsBackButtonVisible="Collapsed"
-         AlwaysShowHeader="False"
+         AlwaysShowHeader="True"
          PaneDisplayMode="Auto"
          CompactModeThresholdWidth="0"
+                            BorderBrush="Transparent"
+                            BorderThickness="0" 
          ExpandedModeThresholdWidth="1000"
          SelectionFollowsFocus="Disabled"
          IsTabStop="False">
+                <NavigationView.Resources>
+                    <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
+                    <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent" />
+                </NavigationView.Resources>
                 <NavigationView.MenuItems>
 
                     <NavigationViewItem Tag="C1OS.HomePage" Icon="Home" Content="主页"/>

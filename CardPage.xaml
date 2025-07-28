@@ -22,9 +22,7 @@ The data template is defined to display a CustomDataObject object (same type as 
         </DataTemplate>
     </Page.Resources>
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="抽签"
-       Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
-        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Margin="36,96,36,24">
+        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Margin="36,24">
 
             <GridView
                     x:Name="StyledGrid"

@@ -11,10 +11,8 @@
     Background="Transparent">
 
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="版本"
-               Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
-        <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
-            <TextBlock HorizontalAlignment="Center" Text="当前版本：2.0.0-rc.4" FontSize="24" Margin="6"/>
+        <StackPanel VerticalAlignment="Center" Margin="36,24">
+            <TextBlock HorizontalAlignment="Center" Text="当前版本：2.0.0-rc.5" FontSize="24" Margin="6"/>
             <TextBlock HorizontalAlignment="Center">
             <Run FontFamily="楷体" Foreground="DarkGray">
             系统开发中，若发现BUG请及时反馈！</Run>
@@ -65,6 +63,13 @@
             <Expander Header="更新日志" IsExpanded="False" ExpandDirection="Down" HorizontalAlignment="Center" MinWidth="500">
                 <ScrollViewer MaxHeight="200" MinHeight="50" Width="450">
                     <TextBlock HorizontalAlignment="Left">
+                        2025.7.27
+                        <LineBreak/>
+                        我们换了新的电脑，暂时决定投入开发其他项目。
+                        <LineBreak/>
+                        本项目暂时搁置一段时间。恢复开发时间待定。
+                        <LineBreak/>
+                        <LineBreak/>
                         2025.5.28
                         <LineBreak/>
                         2.0.0-rc.4(内部版本1.12.0)

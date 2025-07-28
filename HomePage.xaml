@@ -10,9 +10,7 @@
     NavigationCacheMode="Enabled"
     Background="Transparent">
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="主页"
-               Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
-        <StackPanel VerticalAlignment="Center" Margin="36,96,36,24" >
+        <StackPanel VerticalAlignment="Center" Margin="36,24" >
             <TextBlock Text="欢迎使用一班专用系统！" HorizontalAlignment="Center" FontFamily="楷体" FontSize="50" 
                            FontStyle="Normal" TextWrapping="WrapWholeWords" CharacterSpacing="20"/>
             <TextBlock FontFamily="楷体" FontSize="25" 

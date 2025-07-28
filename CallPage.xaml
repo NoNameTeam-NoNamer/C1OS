@@ -12,9 +12,7 @@
     Background="Transparent">
 
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="点名"
-               Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,48,0,0">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,24,0,0">
            <StackPanel Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Top"

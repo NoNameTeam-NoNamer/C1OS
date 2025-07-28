@@ -9,12 +9,10 @@
     mc:Ignorable="d"
     NavigationCacheMode="Enabled"
     Background="Transparent">
-    
+
 
     <Grid>
-        <TextBlock x:Name="pageTitle" Text="考试"
-               Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
-        <StackPanel VerticalAlignment="Center" Margin="36,96,36,24">
+        <StackPanel VerticalAlignment="Center" Margin="36,24">
             <TextBlock HorizontalAlignment="Center" TextAlignment="Center"  Text="输入时间后点击下方按钮开考！" Style="{StaticResource TitleTextBlockStyle}" x:Name="TextOutput" Margin="48"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <NumberBox Margin="6" HorizontalAlignment="Center" Header="准备时长：" PlaceholderText="时长（分钟）" MaxWidth="500" x:Name="ReadyTimeImput" SpinButtonPlacementMode="Inline" SmallChange="1" LargeChange="10"/>

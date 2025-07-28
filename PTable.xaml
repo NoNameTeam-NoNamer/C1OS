@@ -11,6 +11,6 @@
     Background="Transparent">
 
     <Grid>
-        <WebView2 x:Name="WebView" Source="https://ptable.com/?lang=zh-hans#"/>
+        <WebView2 x:Name="WebView" Source="https://ptable.com/?lang=zh-hans#"  Margin="0,12,0,12" CanBeScrollAnchor="True"/>
     </Grid>
 </Page>

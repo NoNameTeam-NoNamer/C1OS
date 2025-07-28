@@ -29,14 +29,21 @@ The data template is defined to display a CustomDataObject object (same type as 
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
-    <Grid>
-        <TextBlock x:Name="pageTitle" Text="设置"
-               Margin="48" Style="{StaticResource TitleTextBlockStyle}"/>
 
-        <StackPanel Margin="36,96,36,24" HorizontalAlignment="Left">
+    <Grid>
+
+        <StackPanel Margin="36,24" HorizontalAlignment="Left">
             <TextBlock HorizontalAlignment="Left" Text="全局设置" Style="{StaticResource SubtitleTextBlockStyle}" Margin="24,24,24,6"/>
-            <Button Content="恢复默认" Margin="36,6" Click="OpenDefult"/>
+            <Border 
+Background="{ThemeResource  LayerOnMicaBaseAltFillColorDefault}" 
+BorderBrush="{ThemeResource  LayerOnMicaBaseAltFillColorDefaultBrush}"
+BorderThickness="1" 
+CornerRadius="4" 
+
+            HorizontalAlignment="Center"
+VerticalAlignment="Center">
+                <Button Content="恢复默认" Margin="36,6" Click="OpenDefult" HorizontalAlignment="Right"/>
+            </Border>
             <DropDownButton Margin="36,6">
                 <DropDownButton.Content>
                     <StackPanel Orientation="Horizontal">

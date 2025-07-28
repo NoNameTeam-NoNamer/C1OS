@@ -11,6 +11,6 @@
     Background="Transparent">
 
     <Grid>
-        <WebView2 x:Name="WebView" Source="https://www.molanqing.com/game/map/map.html"/>
+        <WebView2 x:Name="WebView" Source="https://www.molanqing.com/game/map/map.html" Margin="0,12,16,12" CanBeScrollAnchor="True"/>
     </Grid>
 </Page>

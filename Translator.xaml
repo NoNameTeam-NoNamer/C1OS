@@ -11,6 +11,6 @@
     Background="Transparent">
 
     <Grid>
-        <WebView2 x:Name="WebView" Source="https://cn.bing.com/translator"/>
+        <WebView2 x:Name="WebView" Source="https://cn.bing.com/translator"  Margin="0,12,0,0" CanBeScrollAnchor="True"/>
     </Grid>
 </Page>
